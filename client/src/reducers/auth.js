@@ -6,7 +6,7 @@ const INITIAL_STATE = {
   email: null
 };
 
-export default function(state = INITIAL_STATE, action) {
+const authReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case AUTH_USER:
       return { ...state, authenticated: action.payload.token,
@@ -18,3 +18,5 @@ export default function(state = INITIAL_STATE, action) {
       return state;
   }
 };
+
+export default authReducer
