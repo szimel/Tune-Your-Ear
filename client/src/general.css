@@ -1,41 +1,41 @@
-.background {
-  height: 100vh;
-  width: 100vh;
-}
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
 
-.white {
-  color: white;
-}
-
+/* navbar css */
 #nav {
-  height: 71px;
+  height: 73px;
   width: 100%;
   float: left;
   margin: 0 0 3em 0;
   padding: 0;
   list-style: none;
   background-color: rgba(0, 0, 0, 0.3);
-  border-bottom: 1px solid black;
-  border-top: 1px solid black;
+  border-bottom: 1px solid rgb(25, 25, 25);
+  border-top: 1px solid rgb(23, 23, 23);
 }
-
-/* #nav:hover {
-  opacity: .6;
-} */
-
 #nav li a {
+  height: 23px;
   display: block;
-  padding: 25px 15px;
+  padding: 25px 25px;
   text-decoration: none;
   font-weight: bold;
   color: rgb(238, 228, 212);
-  border-right: 1px solid black;
   float: left;
+  font-family: "Montserrat", sans-serif;
 }
-
 #nav li a:hover {
   background-color: rgba(0, 0, 0, 0.5);
 }
+/* so logout looks clean */
+#auth-nav {
+  height: 23px;
+  display: block;
+  text-decoration: none;
+  font-weight: bold;
+  color: rgb(238, 228, 212);
+  float: right;
+  font-family: "Montserrat", sans-serif;
+}
+
 /* image css */
 .image {
   /* Set rules to fill background */
