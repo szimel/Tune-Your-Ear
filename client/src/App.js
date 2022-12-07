@@ -10,6 +10,10 @@ function App() {
       <Link to='/signup'>
         Sign Up
       </Link>
+      <br />
+      <Link to='login'>
+        Log In
+      </Link>
     </div>
   );
 }

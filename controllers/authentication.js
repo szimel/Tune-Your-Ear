@@ -28,12 +28,12 @@ exports.currentUser = function(req, res) {
   });
 };
 
+//handle new users
 exports.signup = function(req, res, next) {
   const email = req.body.email;
   const password = req.body.password;
 
   if (!email || !password) {
-    console.log(req.body);
     return res.status(422).send({ error: 'You must provide email and password'});
   }
 

@@ -9,6 +9,7 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import SignUp from './components/signup'
+import Login from './components/login'
 
 
 //routes config *loaders and fetcher to update state?*
@@ -20,6 +21,10 @@ const router = createBrowserRouter ([
   {
     path: "signup",
     element: <SignUp />,
+  },
+  {
+    path: 'login',
+    element: <Login />
   }, 
 ]);
 

@@ -5,7 +5,7 @@ var crypto = require('crypto');
 
 // very basic stored info on users - need to add progress, perfect pitch models
 const UserSchema = new Schema ({
-  email: { type: String, unique: true, lowercase: true },
+  email: { type: String, unique: true },
   hash: String,
   salt: String
 });
