@@ -5,7 +5,7 @@ import { AUTH_USER, AUTH_ERROR } from "./types";
 const hacky = 'http://localhost:5000';
 
 
-//handle sign ups
+//handle sign up
 export const signup = (formData, callback) => dispatch => {
   axios.post(
     `${hacky}/auth/signup`,
@@ -33,4 +33,12 @@ export const login = (formData, callback) => dispatch => {
   .catch(function (error) {
     dispatch({ type: AUTH_ERROR, payload: error });
   });
+};
+
+//handle sign out
+export const signout = (callback) => dispatch => {
+  localStorage.removeItem('token');
+
+  dispatch({ type: AUTH_USER, payload: '' });
+  callback()
 };
