@@ -3,18 +3,26 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
+import { userAnswer } from "../actions";
 
 const answerSchema = Yup.object().shape({
   answer: Yup.string().max(2, 'Invalid answer!').required()
 });
 
+
+//using var outside Test allows global variables 
 var num;
+var answer;
 
 const Test = () => {
   //yup setup for grabbing user answers
   const { register, handleSubmit, formState: { errors }} = useForm({
     resolver: yupResolver(answerSchema)
   });
+
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
 
   //creates audio file
@@ -80,14 +88,13 @@ const Test = () => {
     'A', 'A', 'A#', 'A#', 'B', 'B', 'C', 'C', 'C#', 'C#', 'D', 'D', 'D#', 'D#', 'E', 'E', 'F', 'F', 'F#', 'F#', 'G', 'G', 'G#', 'G#'
   ];
 
+
   //gives random number, plays sound, & checks validity? 
   const start = () => {
-    //give random number through 24
     let a = Math.random();
     let b = Math.round(a*23);
-    console.log('random number was: ' + decode[b]);
+    console.log('correct answer is: ' + decode[b]);
 
-    //play random sound
     audio[b].play()
 
     //send random number to check user answer
@@ -103,26 +110,49 @@ const Test = () => {
 
   //grabs answer and checks if wrong or right
   const handleFormSubmit = (e) => {
-    console.log('num = ' + num)
     let correctAnswer = decode[num];
-    let userAnswer = e.answer.toUpperCase();
+    let formAnswer = e.answer.toUpperCase();
 
-    console.log(correctAnswer, userAnswer);
-
-    if(correctAnswer === userAnswer) {
+    if(correctAnswer === formAnswer) {
       //*dispatch backend call* data shoud look like:
       const data = {
         note: correctAnswer, correct: true
       };
-      console.log('true')
-      //*function that returns jsx indicating correct answer*
+
+      setAnswer(data.correct);
+
+      dispatch(userAnswer(data));
     } else {
       //*dispatch backend call* data shoud look like:
       const data = {
         note: correctAnswer, correct: false
       };
-      //*function that returns jsx indicating incorrect answer*
+
+      setAnswer(data.correct);
+
+      dispatch(userAnswer(data));
     };
+  };
+
+  //sets answer - only way i could get jsx to work correctly 
+  //for result function - had to use global variable
+  const setAnswer = (e) => {
+    return answer = e;
+  };
+
+
+  //jsx to update ui on user answer
+  const result = (e) => {
+    if(e === true) {
+      console.log(true);
+      return <div>Your answer is correct!</div>;
+    } else if (e === false) {
+      console.log(false)
+        const answer = <div>Your answer is incorrect!</div>;
+        return answer;
+    } else {
+      return <div>No answer!</div>
+    };  
   };
 
 
@@ -138,6 +168,9 @@ const Test = () => {
         <br/>
         {errors.answer?.message}
         <button className="btn btn-outline-secondary mt-2 offset-md-2 mb-2" type="submit">Submit</button>
+        <div>
+          {result(answer)}
+        </div>
       </form>
     </div>
   )

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { AUTH_USER, AUTH_ERROR } from "./types";
+import { AUTH_USER, AUTH_ERROR, USER_PROFILE } from "./types";
 
 
 const hacky = 'http://localhost:5000';
@@ -42,3 +42,19 @@ export const signout = (callback) => dispatch => {
   dispatch({ type: AUTH_USER, payload: '' });
   callback()
 };
+
+//handle adding answers to user profile
+export const userAnswer = (data) => dispatch => {
+  const config = {
+    headers: {
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    }
+  };
+  axios.post(`${hacky}`, data, config)
+  .then(function (response) {
+    dispatch({ type: USER_PROFILE, payload: response.data });
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+}
