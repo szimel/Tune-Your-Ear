@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import SignUp from './components/signup'
 import Login from './components/login'
+import Test from './components/test'
 
 
 //routes config *loaders and fetcher to update state?*
@@ -24,8 +25,12 @@ const router = createBrowserRouter ([
   },
   {
     path: "login",
-    element: <Login />
-  }, 
+    element: <Login />,
+  },
+  {
+    path: 'test',
+    element: <Test />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
