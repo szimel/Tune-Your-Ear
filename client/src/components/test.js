@@ -1,7 +1,21 @@
+import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { useNavigate } from 'react-router-dom';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from 'yup';
 
+const answerSchema = Yup.object().shape({
+  answer: Yup.string().max(2, 'Invalid answer!').required()
+});
 
+var num;
 
 const Test = () => {
+  //yup setup for grabbing user answers
+  const { register, handleSubmit, formState: { errors }} = useForm({
+    resolver: yupResolver(answerSchema)
+  });
+
 
   //creates audio file
   const audioSetup = {
@@ -29,7 +43,8 @@ const Test = () => {
     G2: new Audio('/notes/G-2.mp3'),
     GS1: new Audio('/notes/GS-1.mp3'),
     GS2: new Audio('/notes/GS-2.mp3')
-  }
+  };
+
 
   //puts into simple form for function
   const audio = [
@@ -59,23 +74,77 @@ const Test = () => {
     audioSetup.GS2
   ];
 
+
   //can plug in same random number to find which note was chosen
   const decode = [
     'A', 'A', 'A#', 'A#', 'B', 'B', 'C', 'C', 'C#', 'C#', 'D', 'D', 'D#', 'D#', 'E', 'E', 'F', 'F', 'F#', 'F#', 'G', 'G', 'G#', 'G#'
-  ]
+  ];
 
-  let b = 'GS2'
-  console.log(audio[0].toString())
-  let a = 0
+  //gives random number, plays sound, & checks validity? 
   const start = () => {
-  
-  }
+    //give random number through 24
+    let a = Math.random();
+    let b = Math.round(a*23);
+    console.log('random number was: ' + decode[b]);
+
+    //play random sound
+    audio[b].play()
+
+    //send random number to check user answer
+    check(b)
+  };
+
+
+  //sets to rand number
+  function check(data) {
+    return num = data;
+  };
+
+
+  //grabs answer and checks if wrong or right
+  const handleFormSubmit = (e) => {
+    console.log('num = ' + num)
+    let correctAnswer = decode[num];
+    let userAnswer = e.answer.toUpperCase();
+
+    console.log(correctAnswer, userAnswer);
+
+    if(correctAnswer === userAnswer) {
+      //*dispatch backend call* data shoud look like:
+      const data = {
+        note: correctAnswer, correct: true
+      };
+      console.log('true')
+      //*function that returns jsx indicating correct answer*
+    } else {
+      //*dispatch backend call* data shoud look like:
+      const data = {
+        note: correctAnswer, correct: false
+      };
+      //*function that returns jsx indicating incorrect answer*
+    };
+  };
+
+
   return (
-    <div><button onClick={start}>Play</button></div>
+    <div>
+      <button onClick={start}>Play</button>
+      <form onSubmit={handleSubmit(handleFormSubmit)}>
+        <label>
+          Your Answer:
+        </label>
+        <br/>
+        <input {...register('answer', {required: true})}></input>
+        <br/>
+        {errors.answer?.message}
+        <button className="btn btn-outline-secondary mt-2 offset-md-2 mb-2" type="submit">Submit</button>
+      </form>
+    </div>
   )
 };
 
-//I want the data to look like {note: C, correct: true}
+//I want the backend user data to look like {note: C, 
+//correct: true}
 //this would allow easy looping through to create graphs and to 
 //show which notes the user is struggling with the most
 
