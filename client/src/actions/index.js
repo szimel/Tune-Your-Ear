@@ -50,7 +50,8 @@ export const userAnswer = (data) => dispatch => {
       Authorization: 'Bearer ' + localStorage.getItem('token'),
     }
   };
-  axios.post(`${hacky}`, data, config)
+  console.log('worked from axios');
+  axios.post(`${hacky}/response`, data, config)
   .then(function (response) {
     dispatch({ type: USER_PROFILE, payload: response.data });
   })

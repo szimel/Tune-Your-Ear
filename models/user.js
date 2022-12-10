@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const Progress = require('./progress');
 var crypto = require('crypto');
 
 
@@ -7,7 +8,9 @@ var crypto = require('crypto');
 const UserSchema = new Schema ({
   email: { type: String, unique: true },
   hash: String,
-  salt: String
+  salt: String,
+  perfectPitchAnswers: [],
+  intervalAnswers: []
 });
 
 UserSchema.methods.setPassword = function(password){
