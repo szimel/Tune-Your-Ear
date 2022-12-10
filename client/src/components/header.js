@@ -12,8 +12,8 @@ const Header = () => {
 
   //grab auth state
   const authenticated = useSelector(state => state.auth.authenticated);
-  console.log(authenticated);
 
+  
   //sign out axios call
   const handleSignOutClick = () => {
     dispatch(signout(() => {

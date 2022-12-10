@@ -1,5 +1,5 @@
 import axios from "axios";
-import { AUTH_USER, AUTH_ERROR, USER_PROFILE } from "./types";
+import { AUTH_USER, AUTH_ERROR, USER_PROFILE, CURRENT_USER } from "./types";
 
 
 const hacky = 'http://localhost:5000';
@@ -58,4 +58,23 @@ export const userAnswer = (data) => dispatch => {
   .catch(function (error) {
     console.log(error);
   });
-}
+};
+
+export const currentUser = () => dispatch => {
+
+  const config = {
+    headers: {
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    }
+  }
+
+  axios.get(
+    `${hacky}/auth/current_user`,
+    config
+    ).then(function (response) {
+      dispatch({ type: CURRENT_USER, payload: response.data });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};

@@ -141,17 +141,14 @@ const Test = () => {
   };
 
 
-  //jsx to update ui on user answer
+  //jsx to update UI on user answer
   const result = (e) => {
     if(e === true) {
-      console.log(true);
       return <div>Your answer is correct!</div>;
     } else if (e === false) {
-      console.log(false)
-        const answer = <div>Your answer is incorrect!</div>;
-        return answer;
+        return <div>Your answer is incorrect!</div>
     } else {
-      return <div>No answer!</div>
+      return <div>Null!</div>
     };  
   };
 
