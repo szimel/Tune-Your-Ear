@@ -13,7 +13,7 @@ const Header = () => {
   //grab auth state
   const authenticated = useSelector(state => state.auth.authenticated);
 
-  
+
   //sign out axios call
   const handleSignOutClick = () => {
     dispatch(signout(() => {
@@ -27,6 +27,7 @@ const Header = () => {
       <div>
         <ul id="nav">
           <li><a href="/"><HomeIcon /></a></li>
+          <li><a href='test'>Perfect Pitch</a></li>
           <li id='auth-nav' onClick={handleSignOutClick}><a href="/"><LogoutIcon /></a></li>
         </ul>
       </div>
@@ -38,9 +39,7 @@ const Header = () => {
       <ul id="nav">
         <li><a href="/"><HomeIcon /></a></li>
         <li><a href="/login">Log In</a></li>
-        <li>
-          <a href='/signup'>Sign Up</a>
-        </li>
+        <li><a href='/signup'>Sign Up</a></li>
       </ul>
     </div>
   )

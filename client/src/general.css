@@ -1,4 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@200&family=Montserrat:wght@500&display=swap");
+
+/* general font */
+.font {
+  font-family: "Inter", sans-serif;
+  font-family: "Montserrat", sans-serif;
+}
 
 /* navbar css */
 #nav {
@@ -13,7 +20,7 @@
   border-top: 1px solid rgb(23, 23, 23);
 }
 #nav li a {
-  height: 23px;
+  height: 71px;
   display: block;
   padding: 25px 25px;
   text-decoration: none;

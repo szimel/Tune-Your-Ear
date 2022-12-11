@@ -10,7 +10,9 @@ import {
 } from "react-router-dom";
 import SignUp from './components/signup'
 import Login from './components/login'
+import PerfectPitch from './components/perfect-pitch'
 import Test from './components/test'
+import "bootstrap/dist/css/bootstrap.css";
 
 
 //routes config *loaders and fetcher to update state?*
@@ -28,9 +30,13 @@ const router = createBrowserRouter ([
     element: <Login />,
   },
   {
-    path: 'test',
-    element: <Test />,
+    path: 'perfect-pitch',
+    element: <PerfectPitch />,
   },
+  {
+    path: 'test',
+    element: <Test />
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
