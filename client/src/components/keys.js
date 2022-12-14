@@ -1,3 +1,5 @@
+import React from "react";
+
 //creates sound variables
 const audioSetup = {
   A1: new Audio('/notes/A-1.mp3'),
@@ -25,6 +27,29 @@ const audioSetup = {
   GS1: new Audio('/notes/GS-1.mp3'),
   GS2: new Audio('/notes/GS-2.mp3')
 }
+let C
+//classifies each note with audio sounds
+export const noteSetup = [
+  {C: [audioSetup.C1, audioSetup.C2]},
+  {CS: [audioSetup.CS1, audioSetup.CS2]},
+  {D: [audioSetup.D1, audioSetup.D2]},
+  {DS: [audioSetup.DS1, audioSetup.DS2]},
+  {E: [audioSetup.E1, audioSetup.E2]},
+  {F: [audioSetup.F1, audioSetup.F2]},
+  {FS: [audioSetup.FS1, audioSetup.FS2]},
+  {G: [audioSetup.G1, audioSetup.G2]},
+  {GS: [audioSetup.GS1, audioSetup.GS2]},
+  {A: [audioSetup.A1, audioSetup.A2]},
+  {AS: [audioSetup.AS1, audioSetup.AS2]},
+  {B: [audioSetup.B1, audioSetup.B2]}
+];
+
+
+// let C, CS, D, DS
+
+// export const noteArray = [
+//   C = noteSetup.C, CS = noteSetup.CS, D = noteSetup.D, DS = noteSetup.DS, noteSetup.E, noteSetup.F, noteSetup.FS, noteSetup.G, noteSetup.GS, noteSetup.A, noteSetup.AS, noteSetup.B
+// ];
 
 
 //puts into simple form for function
@@ -60,3 +85,20 @@ export const audio = [
 export const decode = [
   'A', 'A', 'A#', 'A#', 'B', 'B', 'C', 'C', 'C#', 'C#', 'D', 'D', 'D#', 'D#', 'E', 'E', 'F', 'F', 'F#', 'F#', 'G', 'G', 'G#', 'G#'
 ];
+
+
+//creates ref for UI piano
+export const refContainer = {
+  C: React.createRef(),
+  CS: React.createRef(),
+  D: React.createRef(),
+  DS: React.createRef(),
+  E: React.createRef(),
+  F: React.createRef(),
+  FS: React.createRef(),
+  G: React.createRef(),
+  GS: React.createRef(),
+  A: React.createRef(),
+  AS: React.createRef(),
+  B: React.createRef(),
+};

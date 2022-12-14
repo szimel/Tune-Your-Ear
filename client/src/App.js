@@ -1,5 +1,3 @@
-import './general.css';
-import { Link } from "react-router-dom";
 import image from './img/2.jpg';
 import Header from './components/header';
 import { useEffect } from 'react';

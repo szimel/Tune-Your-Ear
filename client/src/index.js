@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import './index.css'
 import App from './App'
 import store from './reducers/store'
 import { Provider } from 'react-redux'
@@ -13,6 +12,7 @@ import Login from './components/login'
 import PerfectPitch from './components/perfect-pitch'
 import Test from './components/test'
 import "bootstrap/dist/css/bootstrap.css";
+import Easy from './components/perfect-pitch/easy'
 
 
 //routes config *loaders and fetcher to update state?*
@@ -34,9 +34,13 @@ const router = createBrowserRouter ([
     element: <PerfectPitch />,
   },
   {
+    path: 'perfect-pitch:easy',
+    element: <Easy />
+  },
+  {
     path: 'test',
     element: <Test />
-  }
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
