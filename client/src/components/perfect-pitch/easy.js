@@ -10,22 +10,22 @@ import { refContainer, audio, audioSetup, noteArray, noteSetup } from '../keys';
 //going to be some kind of array so it can be given a random number to choose from 
 
 //controls which notes are being played
-var chosenNotes = [];
+var chosenNotes = {};
 
 const Easy = () => { 
   
   //notes for easy
-  const refArray = [
-    refContainer.C, refContainer.D, refContainer.E, refContainer.F, refContainer.G
-  ];
-
-  const testRefArray = [
-    refContainer.C
-  ]
+  const refArray = {
+    C: refContainer.C, D: refContainer.D, E: refContainer.E, F: refContainer.F, G: refContainer.G
+  };
 
 
+  //clicks notes in refArray
   useEffect(() => {
-    refArray.map(e => e.current.click())
+    const keys = Object.keys(refArray);
+    keys.map(e => {
+      refArray[e].current.click();
+    });
   });
 
   
@@ -34,27 +34,22 @@ const Easy = () => {
 
   //adds notes to above array 
   const setNotes = (e) => {
-    let a = e.target.getAttribute('note').toString();
-    console.log(a)
-
-
+    let a = e.target.getAttribute('note').toString()
 
     //finds if adding or removing targeted note
     if (e.target.getAttribute('id') === '') {
-      console.log('removing');
-      //match note to audio files
+      return delete chosenNotes[a];
+
     } else {
       noteSetup.find(e => {
-
         //match note to audio files and add it to note array
         if(Object.keys(e) == a) {
-          let [key] = Object.entries(e)
-          let format = key[1]
-          return chosenNotes.push(format[1], format[0]);
+          let [key] = Object.entries(e);
+
+          return chosenNotes[key[0]] = key[1];
         };
-      })
-      console.log('adding');
-    }
+      });
+    };
   };
 
 
