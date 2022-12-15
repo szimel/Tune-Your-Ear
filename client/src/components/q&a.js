@@ -5,11 +5,13 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { userAnswer } from "../actions";
+import '../general.css'
 
 
 const style = {
   width: '200px'
 };
+
 
 const answerSchema = Yup.object().shape({
   answer: Yup.string().max(2, 'Invalid answer!').required()
@@ -90,11 +92,11 @@ const Forms = () => {
 
 
   return (
-    <div>
+    <div id="builder-container" >
       <div className="mt-5 mx-auto" style={{width: '490px'}}><p className="font">
       Click on the piano above to add or remove notes from quiz!
       </p></div>
-      <div className="mx-auto " style={style}>
+      <div className="mx-auto " style={{width: '490px'}}>
         <div>
         <button className='btn btn-outline-secondary mt-3' onClick={onClick}
         style={{display: show ? 'block' : 'none'}}>Play</button>

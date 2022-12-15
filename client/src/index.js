@@ -9,8 +9,8 @@ import {
 } from "react-router-dom";
 import SignUp from './components/signup'
 import Login from './components/login'
-import PerfectPitch from './components/perfect-pitch'
-import Test from './components/test'
+import PerfectPitch from './components/perfect-pitch/perfect-pitch'
+import Test from './components/perfect-pitch/perfect-pitch'
 import "bootstrap/dist/css/bootstrap.css";
 import Easy from './components/perfect-pitch/easy'
 import Intermediate from './components/perfect-pitch/intermediate'
@@ -46,10 +46,6 @@ const router = createBrowserRouter ([
   {
     path: 'perfect-pitch/hard',
     element: <Hard />
-  },
-  {
-    path: 'test',
-    element: <Test />
   },
 ]);
 

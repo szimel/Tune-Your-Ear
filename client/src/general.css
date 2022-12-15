@@ -8,30 +8,37 @@
 }
 
 /* navbar css */
-#nav {
-  height: 73px;
+#nav-reg {
+}
+#nav-home {
+  height: 90px;
   width: 100%;
   float: left;
   margin: none;
   padding: 0;
   list-style: none;
-  background: none;
-  background-color: rgba(0, 0, 0, 0.3);
-  border-bottom: 1px solid rgb(25, 25, 25);
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 1) 100%
+  );
   border-top: 1px solid rgb(23, 23, 23);
 }
-#nav li a {
-  height: 71px;
+#nav-home:hover {
+  background: rgba(0, 0, 0, 0.5);
+}
+#nav-home li a {
+  height: 89px;
   display: block;
-  padding: 25px 25px;
+  padding: 30px 25px;
   text-decoration: none;
   font-weight: bold;
-  color: rgb(238, 228, 212);
+  color: rgb(230, 215, 193);
   float: left;
   font-family: "Montserrat", sans-serif;
 }
-#nav li a:hover {
-  background-color: rgba(0, 0, 0, 0.5);
+#nav-home li a:hover {
+  background-color: black;
   border-radius: 1em;
 }
 /* so logout looks clean */
@@ -67,4 +74,14 @@
     left: 50%;
     margin-left: -512px; /* 50% */
   }
+}
+
+/* q&a form css */
+#builder-container {
+  background: #f2f2f2;
+  width: 40vw;
+  margin: auto;
+  border-radius: 2em;
+  box-shadow: 0 1px rgba(212, 152, 125, 0.2) inset,
+    0 15px 50px rgba(0, 0, 0, 0.5);
 }

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import '../../index.css'
-import Header from '../header';
+import Header from '../headers/header-reg';
 import { refContainer, noteSetup } from '../keys';
 import Forms from '../q&a';
 
@@ -36,16 +36,7 @@ const Easy = () => {
     } else {
       return chosenNotes[a] = noteSetup[a]
     };
-  };
-
-
-
-
-
- 
-
-  
-  
+  };  
 
 
 

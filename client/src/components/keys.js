@@ -45,13 +45,6 @@ export const noteSetup = {
 };
 
 
-let C, CS, D, DS
-
-export const noteArray = [
-  C = noteSetup.C, CS = noteSetup.CS, D = noteSetup.D, DS = noteSetup.DS, noteSetup.E, noteSetup.F, noteSetup.FS, noteSetup.G, noteSetup.GS, noteSetup.A, noteSetup.AS, noteSetup.B
-];
-
-
 //puts into simple form for function
 export const audio = [
   audioSetup.A1,
@@ -78,12 +71,6 @@ export const audio = [
   audioSetup.G2,
   audioSetup.GS1,
   audioSetup.GS2
-]
-
-
-//can plug in same random number to find which note was chosen
-export const decode = [
-  'A', 'A', 'A#', 'A#', 'B', 'B', 'C', 'C', 'C#', 'C#', 'D', 'D', 'D#', 'D#', 'E', 'E', 'F', 'F', 'F#', 'F#', 'G', 'G', 'G#', 'G#'
 ];
 
 

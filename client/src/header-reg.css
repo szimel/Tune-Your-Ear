@@ -1,0 +1,28 @@
+#nav-reg {
+  height: 90px;
+  width: 100%;
+  float: left;
+  margin: none;
+  padding: 0;
+  list-style: none;
+  background: none;
+  border-top: 1px solid rgb(187, 187, 187);
+  border-bottom: 1px solid rgb(187, 187, 187);
+}
+#nav-reg li a {
+  height: 89px;
+  display: block;
+  padding: 30px 25px;
+  text-decoration: none;
+  font-weight: bold;
+  color: rgb(142, 142, 142);
+  float: left;
+  font-family: "Montserrat", sans-serif;
+}
+#nav-reg li a:hover {
+  background-color: rgba(230, 230, 230, 0.5);
+  border-radius: 1em;
+}
+.white {
+  color: white;
+}
