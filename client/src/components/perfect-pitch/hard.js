@@ -8,19 +8,12 @@ import Forms from '../q&a';
 //controls which notes are being played
 export var chosenNotes = {};
 
-const Easy = () => { 
-  
-  //notes for easy
-  const refArray = {
-    C: refContainer.C, E: refContainer.E, G: refContainer.G
-  };
-
-
+const Hard = () => { 
   //clicks notes in refArray
   useEffect(() => {
-    const keys = Object.keys(refArray);
+    const keys = Object.keys(refContainer);
     keys.map(e => {
-      refArray[e].current.click();
+      refContainer[e].current.click();
     });
   });
 
@@ -140,4 +133,4 @@ const Easy = () => {
 };
 
 
-export default Easy;
+export default Hard;
