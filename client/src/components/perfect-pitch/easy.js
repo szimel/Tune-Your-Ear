@@ -34,16 +34,19 @@ const Easy = () => {
       return delete chosenNotes[a];
 
     } else {
-      noteSetup.find(e => {
-        //match note to audio files and add it to note array
-        if(Object.keys(e) == a) {
-          let [key] = Object.entries(e);
-
-          return chosenNotes[key[0]] = key[1];
-        };
-      });
+      return chosenNotes[a] = noteSetup[a]
     };
   };
+
+
+
+
+
+ 
+
+  
+  
+
 
 
   //highlights white key

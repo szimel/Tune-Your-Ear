@@ -27,29 +27,29 @@ const audioSetup = {
   GS1: new Audio('/notes/GS-1.mp3'),
   GS2: new Audio('/notes/GS-2.mp3')
 }
-let C
+
 //classifies each note with audio sounds
-export const noteSetup = [
-  {C: [audioSetup.C1, audioSetup.C2]},
-  {CS: [audioSetup.CS1, audioSetup.CS2]},
-  {D: [audioSetup.D1, audioSetup.D2]},
-  {DS: [audioSetup.DS1, audioSetup.DS2]},
-  {E: [audioSetup.E1, audioSetup.E2]},
-  {F: [audioSetup.F1, audioSetup.F2]},
-  {FS: [audioSetup.FS1, audioSetup.FS2]},
-  {G: [audioSetup.G1, audioSetup.G2]},
-  {GS: [audioSetup.GS1, audioSetup.GS2]},
-  {A: [audioSetup.A1, audioSetup.A2]},
-  {AS: [audioSetup.AS1, audioSetup.AS2]},
-  {B: [audioSetup.B1, audioSetup.B2]}
+export const noteSetup = {
+  C: [audioSetup.C1, audioSetup.C2],
+  CS: [audioSetup.CS1, audioSetup.CS2],
+  D: [audioSetup.D1, audioSetup.D2],
+  DS: [audioSetup.DS1, audioSetup.DS2],
+  E: [audioSetup.E1, audioSetup.E2],
+  F: [audioSetup.F1, audioSetup.F2],
+  FS: [audioSetup.FS1, audioSetup.FS2],
+  G: [audioSetup.G1, audioSetup.G2],
+  GS: [audioSetup.GS1, audioSetup.GS2],
+  A: [audioSetup.A1, audioSetup.A2],
+  AS: [audioSetup.AS1, audioSetup.AS2],
+  B: [audioSetup.B1, audioSetup.B2]
+};
+
+
+let C, CS, D, DS
+
+export const noteArray = [
+  C = noteSetup.C, CS = noteSetup.CS, D = noteSetup.D, DS = noteSetup.DS, noteSetup.E, noteSetup.F, noteSetup.FS, noteSetup.G, noteSetup.GS, noteSetup.A, noteSetup.AS, noteSetup.B
 ];
-
-
-// let C, CS, D, DS
-
-// export const noteArray = [
-//   C = noteSetup.C, CS = noteSetup.CS, D = noteSetup.D, DS = noteSetup.DS, noteSetup.E, noteSetup.F, noteSetup.FS, noteSetup.G, noteSetup.GS, noteSetup.A, noteSetup.AS, noteSetup.B
-// ];
 
 
 //puts into simple form for function
