@@ -1,7 +1,17 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { currentUser } from "../actions";
 import Header from "./headers/header-reg";
 
 
 const Progress = () => {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(currentUser());
+  }, []);
+
+  const progress = useSelector(state => state.user);
+  console.log(progress);
   return (
     <div>
       <Header />

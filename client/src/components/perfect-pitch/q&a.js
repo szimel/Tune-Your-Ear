@@ -27,7 +27,7 @@ const Forms = () => {
 
   //determine if user answer is correct and make backend call
   const handleFormSubmit = (e) => {
-    console.log(chosenAudio.answer)
+    console.log(e.answer)
     if(chosenAudio.answer === e.answer.toUpperCase()) {
       const data = {
         note: chosenAudio.answer, correct: true
@@ -103,25 +103,22 @@ const Forms = () => {
 
   return (
     <div id="builder-container" >
-      <div className="mx-auto style" style={{width: '490px'}}><p className="font">
-      Click on the piano above to add or remove notes from quiz!
+      <div className="mx-auto style" style={{width: '380px'}}><p className="font">
+      Highlighted piano keys will appear in quiz!
       </p></div>
       <div className="mx-auto " style={{width: '490px'}}>
         <div>
-        <button className='btn btn-outline-secondary mx-auto' onClick={onClick}
+        <button className='custom-built' id='custom-built'onClick={onClick}
         style={{display: show ? 'block' : 'none'}}>Play</button>
-        <button className='btn btn-outline-secondary mt-3 mx-auto' onClick={playAudio} style={{display: Show ? 'block' : 'none'}}>Replay</button>
-        </div>
+        <button className='custom-built' onClick={playAudio} style={{display: Show ? 'block' : 'none'}}>Replay</button>
+      </div>
 
         <form onSubmit={handleSubmit(handleFormSubmit)}>
-          <label>
-            Your Answer:
-          </label>
-          <br/>
-          <input className="Style"{...register('answer', {required: true})}></input>
-          <button className="btn btn-outline-secondary " type="submit">Submit</button>
-          <br/>
-          {errors.answer?.message}
+        <div className="did-floating-label-content">
+          <input className="did-floating-input" type="text" placeholder=" " {...register('answer', {required: true})}/><p id="error"><em>{errors.answer?.message}</em></p>
+          <label className="did-floating-label">Your Answer</label>
+        </div>
+          <button className="custom-built " type="submit" style={{display: Show ? 'block' : 'none'}}>Submit</button>
           <div>{results()}</div>
         </form>
       </div>

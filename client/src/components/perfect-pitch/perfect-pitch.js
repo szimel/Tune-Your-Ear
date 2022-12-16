@@ -17,12 +17,6 @@ const Test = () => {
     }));
   };
 
-  const quizDifficulty = useSelector(state => state);
-  console.log(quizDifficulty);
-  function plz() {
-    console.log(quizDifficulty);
-  };
-
   return (
     <div>
       <div>
