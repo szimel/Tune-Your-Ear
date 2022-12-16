@@ -10,11 +10,8 @@ import {
 import SignUp from './components/signup'
 import Login from './components/login'
 import PerfectPitch from './components/perfect-pitch/perfect-pitch'
-import Test from './components/perfect-pitch/perfect-pitch'
 import "bootstrap/dist/css/bootstrap.css";
-import Easy from './components/perfect-pitch/easy'
-import Intermediate from './components/perfect-pitch/intermediate'
-import Hard from './components/perfect-pitch/hard'
+import Easy from './components/perfect-pitch/perfect-pitch-quiz'
 
 
 //routes config *loaders and fetcher to update state?*
@@ -36,16 +33,8 @@ const router = createBrowserRouter ([
     element: <PerfectPitch />,
   },
   {
-    path: 'perfect-pitch/easy',
+    path: 'perfect-pitch/quiz',
     element: <Easy />
-  },
-  {
-    path: 'perfect-pitch/medium',
-    element: <Intermediate />
-  },
-  {
-    path: 'perfect-pitch/hard',
-    element: <Hard />
   },
 ]);
 

@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import { signup } from '../actions';
+import Header from './headers/header-reg';
 
 //input requirements 
 const userSchema = Yup.object().shape({
@@ -28,6 +29,10 @@ const SignUp = () => {
 
 
   return(
+    <>
+    <div>
+      <Header />
+    </div>
     <div className='row mt-5 pt-5 '>
         <div className="offset-4 col-md-3 color edges">
           <form onSubmit={handleSubmit(handleFormSubmit)}>
@@ -51,6 +56,7 @@ const SignUp = () => {
           </form>
         </div>
       </div>  
+    </>
   )
 };
 

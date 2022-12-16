@@ -1,4 +1,4 @@
-import { chosenNotes } from "./perfect-pitch/easy";
+import { chosenNotes } from "./perfect-pitch/perfect-pitch-quiz";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { useForm } from "react-hook-form";
@@ -6,11 +6,6 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { userAnswer } from "../actions";
 import '../general.css'
-
-
-const style = {
-  width: '200px'
-};
 
 
 const answerSchema = Yup.object().shape({
@@ -41,6 +36,8 @@ const Forms = () => {
       toggleMenu();
       // backend call
       dispatch(userAnswer(data));
+      //UI wrong or right
+      results(true);
 
     } else {
       const data = {
@@ -48,6 +45,7 @@ const Forms = () => {
       };
       toggleMenu();
       dispatch(userAnswer(data));
+      results(false, chosenAudio.answer);
     };
   };
 
@@ -90,15 +88,27 @@ const Forms = () => {
     toggleMenu();
   };
 
+  const results = (e, note) => {
+    if(e === true) {
+      console.log('true');
+      return <p>Correct!</p>;
+    } else if (e === false) {
+      console.log('false');
+      return <p>Incorrect, {note} was the answer.</p>;
+    } else {
+      return null;
+    }
+  }
+
 
   return (
     <div id="builder-container" >
-      <div className="mt-5 mx-auto" style={{width: '490px'}}><p className="font">
+      <div className="mx-auto style" style={{width: '490px'}}><p className="font">
       Click on the piano above to add or remove notes from quiz!
       </p></div>
       <div className="mx-auto " style={{width: '490px'}}>
         <div>
-        <button className='btn btn-outline-secondary mt-3' onClick={onClick}
+        <button className='btn btn-outline-secondary ' onClick={onClick}
         style={{display: show ? 'block' : 'none'}}>Play</button>
         <button className='btn btn-outline-secondary mt-3' onClick={playAudio} style={{display: Show ? 'block' : 'none'}}>Replay</button>
         </div>
@@ -108,10 +118,11 @@ const Forms = () => {
             Your Answer:
           </label>
           <br/>
-          <input {...register('answer', {required: true})}></input>
+          <input className="Style"{...register('answer', {required: true})}></input>
+          <button className="btn btn-outline-secondary " type="submit">Submit</button>
           <br/>
           {errors.answer?.message}
-          <button className="btn btn-outline-secondary mt-2 offset-md-2 mb-2" type="submit">Submit</button>
+          <div>{results()}</div>
         </form>
       </div>
     </div>

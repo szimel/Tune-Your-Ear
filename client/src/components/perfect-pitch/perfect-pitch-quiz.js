@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import '../../index.css'
 import Header from '../headers/header-reg';
 import { refContainer, noteSetup } from '../keys';
@@ -7,13 +8,27 @@ import Forms from '../q&a';
 
 //controls which notes are being played
 export var chosenNotes = {};
+var refArray = {}
+
 
 const Easy = () => { 
-  
-  //notes for easy
-  const refArray = {
-    C: refContainer.C, E: refContainer.E, G: refContainer.G
+  //sets which notes to highlight
+  const quizDifficulty = useSelector(state => state.difficulty);
+  const helper = () => {
+    //find what mode user selected
+    if(quizDifficulty.data === 'easy') {
+      return refArray = {
+        C: refContainer.C, E: refContainer.E, G: refContainer.G
+      };
+    } else if (quizDifficulty.data === 'medium') {
+      return refArray = {
+        C: refContainer.C, D: refContainer.D, E: refContainer.E, F: refContainer.F, G: refContainer.G, A: refContainer.A, B: refContainer.B
+      };
+    } else if(quizDifficulty.data === 'hard') {
+      return refArray = refContainer
+    };
   };
+  helper();
 
 
   //clicks notes in refArray

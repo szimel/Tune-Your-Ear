@@ -1,5 +1,5 @@
 import axios from "axios";
-import { AUTH_USER, AUTH_ERROR, USER_PROFILE, CURRENT_USER } from "./types";
+import { AUTH_USER, AUTH_ERROR, USER_PROFILE, CURRENT_USER, DIFFICULTY } from "./types";
 
 
 const hacky = 'http://localhost:5000';
@@ -77,4 +77,17 @@ export const currentUser = () => dispatch => {
     .catch(function (error) {
       console.log(error);
     });
+};
+
+//adding difficulty to state
+export const quizMode = (e, callback) => dispatch => {
+  
+  axios.post(
+    `${hacky}/quiz`, {e})
+    .then(function (response) {
+      dispatch({ type: DIFFICULTY, payload: response.data });
+      callback();
+    }).catch(function (error) {
+    console.log(error);
+  });
 };

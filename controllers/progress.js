@@ -10,3 +10,11 @@ exports.log = function(req, res, next) {
   });
 };
 
+//quiz difficulty 
+exports.difficulty = function(req, res) {
+  const difficulty = {};
+  difficulty.data = req.body.e
+  res.send(difficulty);
+  
+};
+

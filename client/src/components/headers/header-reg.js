@@ -27,7 +27,7 @@ const Header = () => {
       <div>
         <ul id="nav-reg">
           <li><a href="/"><HomeIcon /></a></li>
-          <li><a href='test'>Perfect Pitch</a></li>
+          <li><a href='/perfect-pitch'>Perfect Pitch</a></li>
           <li id='auth-nav' onClick={handleSignOutClick}><a href="/"><LogoutIcon /></a></li>
         </ul>
       </div>

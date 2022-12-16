@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { login } from "../actions";
+import Header from "./headers/header-reg";
 
 const userSchema = Yup.object().shape({
   email: Yup.string().email().required(),
@@ -27,7 +28,7 @@ const Login = () => {
 
   return (
     <div>
-      <h1>Log In</h1>
+      <Header />
       <div className='row mt-5 pt-5 '>
         <div className="offset-4 col-md-3 color edges">
           <form onSubmit={handleSubmit(handleFormSubmit)}>

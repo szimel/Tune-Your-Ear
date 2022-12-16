@@ -1,8 +1,28 @@
 import Dropdown from 'react-bootstrap/Dropdown';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { quizMode } from '../../actions';
 import Header from '../headers/header-reg';
 
 
+// need to make action call to add easy medium or hard to store 
+
 const Test = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const SetChosenMode = (e) => {
+    dispatch(quizMode(e, () => {
+      navigate("/perfect-pitch/quiz", { replace: true });
+    }));
+  };
+
+  const quizDifficulty = useSelector(state => state);
+  console.log(quizDifficulty);
+  function plz() {
+    console.log(quizDifficulty);
+  };
+
   return (
     <div>
       <div>
@@ -19,11 +39,14 @@ const Test = () => {
               Dropdown Button
             </Dropdown.Toggle>
             <Dropdown.Menu>
-              <Dropdown.Item href='http://localhost:3000/perfect-pitch/easy'>C, E, G</Dropdown.Item>
-              <Dropdown.Item href="http://localhost:3000/perfect-pitch/medium">C Scale - C, D, E, F, G, A, B, C</Dropdown.Item>
-              <Dropdown.Item href="http://localhost:3000/perfect-pitch/hard">All Notes</Dropdown.Item>
+              <Dropdown.Item  onClick={() => SetChosenMode('easy')}>C, E, G</Dropdown.Item>
+              <Dropdown.Item  onClick={() => SetChosenMode('medium')}>C Scale - C, D, E, F, G, A, B, C</Dropdown.Item>
+              <Dropdown.Item  onClick={() => SetChosenMode('hard')}>All Notes</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
+        </div>
+        <div onClick={plz}>
+          right her ebayb
         </div>
       </div>
     </div>

@@ -1,26 +1,32 @@
 import image from './img/2.jpg';
 import Header from './components/headers/header-home';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { currentUser } from './actions';
+import { useSelector } from 'react-redux';
+import './general.css'
 
 function App() {
-  const dispatch = useDispatch()
+    const authenticated = useSelector(state => state.auth.authenticated);
 
-  useEffect(() => {
-    dispatch(currentUser());
-    }, []);
-
-  const user = useSelector(state => state.user);
-
-  console.log(user);
-
+    if (authenticated) {
+      return (
+        <>
+          <Header />
+          <div style={{ backgroundImage: `url(${image})` }} className="image">
+            <Header />
+          </div>
+        </>
+      );
+    };
 
   return (
     <>
       <Header />
       <div style={{ backgroundImage: `url(${image})` }} className="image">
         <Header />
+        <div className='home'>
+          <div style={{width: '500px', margin: 'auto', background: 'rgb(218, 218, 218)', height: '300px'}}>
+            <p className='font m-3'>'im gonna killy willy my selfie welfie' said Samuel, feverently</p>
+          </div>
+        </div>
       </div>
     </>
   );

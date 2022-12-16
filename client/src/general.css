@@ -85,3 +85,28 @@
   box-shadow: 0 1px rgba(212, 152, 125, 0.2) inset,
     0 15px 50px rgba(0, 0, 0, 0.5);
 }
+
+/* for home instructions */
+.home {
+  margin-top: 35vh;
+}
+
+.home div {
+  box-shadow: 0 15px 75px rgba(0, 0, 0, 1);
+  border-radius: 2em;
+  /* border: solid 1px black; */
+}
+
+/* for q&a first div */
+.style {
+  margin-top: 60px;
+}
+
+.style p {
+  padding-top: 30px;
+}
+
+.Style {
+  margin-right: 1em;
+  margin-bottom: 1em;
+}
