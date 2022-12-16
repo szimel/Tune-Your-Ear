@@ -12,6 +12,7 @@ import Login from './components/login'
 import PerfectPitch from './components/perfect-pitch/perfect-pitch'
 import "bootstrap/dist/css/bootstrap.css";
 import Easy from './components/perfect-pitch/perfect-pitch-quiz'
+import Progress from './components/progress'
 
 
 //routes config *loaders and fetcher to update state?*
@@ -36,6 +37,10 @@ const router = createBrowserRouter ([
     path: 'perfect-pitch/quiz',
     element: <Easy />
   },
+  {
+    path: 'progress',
+    element: <Progress />
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

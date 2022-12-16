@@ -45,9 +45,6 @@ const Test = () => {
             </Dropdown.Menu>
           </Dropdown>
         </div>
-        <div onClick={plz}>
-          right her ebayb
-        </div>
       </div>
     </div>
   )

@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import '../../index.css'
 import Header from '../headers/header-reg';
 import { refContainer, noteSetup } from '../keys';
-import Forms from '../q&a';
+import Forms from './q&a';
 
 
 //controls which notes are being played

@@ -1,11 +1,11 @@
-import { chosenNotes } from "./perfect-pitch/perfect-pitch-quiz";
+import { chosenNotes } from "./perfect-pitch-quiz";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { userAnswer } from "../actions";
-import '../general.css'
+import { userAnswer } from "../../actions";
+import '../../general.css'
 
 
 const answerSchema = Yup.object().shape({
@@ -108,9 +108,9 @@ const Forms = () => {
       </p></div>
       <div className="mx-auto " style={{width: '490px'}}>
         <div>
-        <button className='btn btn-outline-secondary ' onClick={onClick}
+        <button className='btn btn-outline-secondary mx-auto' onClick={onClick}
         style={{display: show ? 'block' : 'none'}}>Play</button>
-        <button className='btn btn-outline-secondary mt-3' onClick={playAudio} style={{display: Show ? 'block' : 'none'}}>Replay</button>
+        <button className='btn btn-outline-secondary mt-3 mx-auto' onClick={playAudio} style={{display: Show ? 'block' : 'none'}}>Replay</button>
         </div>
 
         <form onSubmit={handleSubmit(handleFormSubmit)}>
