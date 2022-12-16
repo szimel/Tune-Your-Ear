@@ -63,6 +63,7 @@ ul .black {
   box-shadow: -1px -1px 2px rgba(255, 255, 255, 0.2) inset,
     0 -5px 2px 3px rgba(0, 0, 0, 0.6) inset, 0 2px 4px rgba(0, 0, 0, 0.5);
   background: linear-gradient(45deg, #222 0%, #555 100%);
+  transition: transform 1s;
 }
 
 ul .black:active {
@@ -79,6 +80,32 @@ ul .black:active {
     rgb(159, 154, 154) 0%,
     rgb(71, 146, 154) 100%
   );
+}
+/* note's that popup on click of ui */
+.black p {
+  color: white;
+  margin: 70px 0 0 15px;
+  font-style: italic;
+
+  font-size: 0px;
+  transition: font-size 1.5s, margin 1.5s, color 1.5s, transform 1s;
+}
+#black p {
+  font-size: 15px;
+  color: #f2f2f2;
+  margin: 70px 0 0 6px;
+}
+.white p {
+  margin: 180px 0 0 32px;
+  font-style: italic;
+  font-size: 0px;
+  color: black;
+  transition: font-size 1.5s, margin 1.5s, color 1.5s, transform 1.5s;
+}
+#white p {
+  margin: 180px 0 0 25px;
+  font-size: 20px;
+  color: #f2f2f2;
 }
 
 .a,

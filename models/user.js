@@ -9,8 +9,7 @@ const UserSchema = new Schema ({
   email: { type: String, unique: true },
   hash: String,
   salt: String,
-  perfectPitchAnswers: [],
-  intervalAnswers: []
+  perfectPitch: [{type: Progress.ProgressSchema}],
 });
 
 UserSchema.methods.setPassword = function(password){

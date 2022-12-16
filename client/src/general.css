@@ -164,6 +164,8 @@
   border-radius: 5px;
   border: 1px gray solid;
   color: gray;
+  display: inline;
+  margin-right: 5px;
 }
 .custom-built:hover {
   background-color: grey;

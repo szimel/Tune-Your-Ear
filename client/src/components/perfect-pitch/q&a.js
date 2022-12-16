@@ -14,6 +14,7 @@ const answerSchema = Yup.object().shape({
 
 //object with data needed for note playback
 var chosenAudio = {};
+var sessionData = {};
 
 
 const Forms = () => {
@@ -27,15 +28,14 @@ const Forms = () => {
 
   //determine if user answer is correct and make backend call
   const handleFormSubmit = (e) => {
-    console.log(e.answer)
+    //reset buttons 
+    handleShow();
     if(chosenAudio.answer === e.answer.toUpperCase()) {
       const data = {
         note: chosenAudio.answer, correct: true
       };
-      //reset buttons
-      toggleMenu();
-      // backend call
-      dispatch(userAnswer(data));
+      // // backend call
+      // dispatch(userAnswer(data));
       //UI wrong or right
       results(true);
 
@@ -43,7 +43,6 @@ const Forms = () => {
       const data = {
         note: chosenAudio.answer, correct: false
       };
-      toggleMenu();
       dispatch(userAnswer(data));
       results(false, chosenAudio.answer);
     };
@@ -52,11 +51,21 @@ const Forms = () => {
   //logic for play and replay button
   const [show, setShow] = useState(true);
   const [Show, SetShow] = useState(false);
-  const toggleMenu = () => {
-    // toggle the current state
-    setShow(current => !current);
-    SetShow(current => !current);
+  const [done, setDone] = useState(false)
+  const handleDone = () => setDone(true);
+  const handleShow = () => {
+      setShow(true);
+      SetShow(false);
   };
+  const handleClose = () => {
+    setShow(false);
+    SetShow(true);
+  }
+  // const toggleMenu = () => {
+  //   // toggle the current state
+  //   setShow(current => !current);
+  //   SetShow(current => !current);
+  // };
 
 
   //function to determine note 
@@ -76,6 +85,9 @@ const Forms = () => {
 
   //simple play audio function
   const playAudio = () => {
+    if(chosenAudio.files === undefined) {
+      alert('Please highlight piano notes!')
+    };
     let audioFiles = chosenAudio.files
     audioFiles[chosenAudio.randNum].play();
   };
@@ -85,7 +97,8 @@ const Forms = () => {
   function onClick() {
     chooseAudio();
     playAudio();
-    toggleMenu();
+    handleClose();
+    handleDone();
   };
 
   const results = (e, note) => {
@@ -97,20 +110,31 @@ const Forms = () => {
       return <p>Incorrect, {note} was the answer.</p>;
     } else {
       return null;
-    }
-  }
+    };
+  };
+
+  const session = (e) => {
+
+  };
+
+  const playButton = <button className='custom-built'onClick={onClick}>Play</button>;
+  const replayButton = <button className='custom-built' onClick={playAudio}>Replay</button>;
+  const doneButton = <button className="custom-built">Done</button>;
 
 
   return (
     <div id="builder-container" >
-      <div className="mx-auto style" style={{width: '380px'}}><p className="font">
-      Highlighted piano keys will appear in quiz!
-      </p></div>
+      <div className="mx-auto style" style={{width: '380px'}}>
+        <p className="font">
+          Highlighted piano keys will appear in quiz!
+        </p>
+      </div>
       <div className="mx-auto " style={{width: '490px'}}>
-        <div>
-        <button className='custom-built' id='custom-built'onClick={onClick}
-        style={{display: show ? 'block' : 'none'}}>Play</button>
-        <button className='custom-built' onClick={playAudio} style={{display: Show ? 'block' : 'none'}}>Replay</button>
+      <div>
+        {show ? playButton : null}
+        {Show ? replayButton: null}
+        {done ? doneButton: null}
+
       </div>
 
         <form onSubmit={handleSubmit(handleFormSubmit)}>
