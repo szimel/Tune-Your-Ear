@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 //stores perfect pitch and interval user answers
 const ProgressSchema = new Schema({
-  sessions: {},
+  session: {},
   answers: [],
 });
 

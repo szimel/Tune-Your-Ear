@@ -44,16 +44,16 @@ export const signout = (callback) => dispatch => {
 };
 
 //handle adding answers to user profile
-export const userAnswer = (data) => dispatch => {
+export const userAnswer = (data, callback) => dispatch => {
   const config = {
     headers: {
       Authorization: 'Bearer ' + localStorage.getItem('token'),
     }
   };
-  console.log('worked from axios');
   axios.post(`${hacky}/response`, data, config)
   .then(function (response) {
     dispatch({ type: USER_PROFILE, payload: response.data });
+    callback();
   })
   .catch(function (error) {
     console.log(error);

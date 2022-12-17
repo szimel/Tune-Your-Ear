@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { userAnswer } from "../../actions";
 import '../../general.css'
+import { useNavigate } from "react-router-dom";
 
 
 const answerSchema = Yup.object().shape({
@@ -14,7 +15,9 @@ const answerSchema = Yup.object().shape({
 
 //object with data needed for note playback
 var chosenAudio = {};
-var sessionData = {};
+var sessionData = {
+  results: []
+};
 
 
 const Forms = () => {
@@ -23,28 +26,25 @@ const Forms = () => {
     resolver: yupResolver(answerSchema)
   });
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
 
   //determine if user answer is correct and make backend call
   const handleFormSubmit = (e) => {
     //reset buttons 
     handleShow();
-    if(chosenAudio.answer === e.answer.toUpperCase()) {
+    //update session data global var
+    if (chosenAudio.answer === e.answer.toUpperCase()) {
       const data = {
-        note: chosenAudio.answer, correct: true
+        note: e.answer, correct: 1
       };
-      // // backend call
-      // dispatch(userAnswer(data));
-      //UI wrong or right
-      results(true);
-
+      return sessionData.results.push(data);
     } else {
       const data = {
-        note: chosenAudio.answer, correct: false
+        note: chosenAudio.answer, correct: 0
       };
-      dispatch(userAnswer(data));
-      results(false, chosenAudio.answer);
+      return sessionData.results.push(data);
     };
   };
 
@@ -60,13 +60,7 @@ const Forms = () => {
   const handleClose = () => {
     setShow(false);
     SetShow(true);
-  }
-  // const toggleMenu = () => {
-  //   // toggle the current state
-  //   setShow(current => !current);
-  //   SetShow(current => !current);
-  // };
-
+  };
 
   //function to determine note 
   const chooseAudio = () => {
@@ -92,7 +86,6 @@ const Forms = () => {
     audioFiles[chosenAudio.randNum].play();
   };
 
-
   //groups multiple calls
   function onClick() {
     chooseAudio();
@@ -113,13 +106,37 @@ const Forms = () => {
     };
   };
 
-  const session = (e) => {
-
+  //so time is added as soon as page is loaded
+  const session = () => {
+    if(sessionData.results.length === 0) {
+      const time = new Date().getTime();
+      return sessionData.time = time
+    };
   };
+  session();
 
+  //handles data for backend 
+  const backendCall = () => {
+    //calculate time during session
+    const time = (new Date().getTime() - sessionData.time)
+    const format = {
+      time: time,
+      results: sessionData.results
+    };
+    dispatch(userAnswer(format, () => {
+      navigate("/perfect-pitch/session", { replace: true });
+    }));
+  }
+
+  //play buttons
   const playButton = <button className='custom-built'onClick={onClick}>Play</button>;
   const replayButton = <button className='custom-built' onClick={playAudio}>Replay</button>;
-  const doneButton = <button className="custom-built">Done</button>;
+  const doneButton = <button className="custom-built" onClick={backendCall}>Done</button>;
+
+  
+  function tester() {
+    console.log(sessionData);
+  };
 
 
   return (
@@ -146,6 +163,7 @@ const Forms = () => {
           <div>{results()}</div>
         </form>
       </div>
+      <div onClick={tester}>oopsies</div>
     </div>
   );
 };
