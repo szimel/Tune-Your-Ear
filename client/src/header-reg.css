@@ -34,7 +34,7 @@
 }
 .styled {
   margin: auto;
-  min-height: 300px;
+  min-height: 350px;
   width: 500px;
   background-color: white;
   border-radius: 1em;
@@ -48,4 +48,7 @@
 .color table {
   margin-left: 40px;
   width: 420px;
+}
+.color p {
+  margin: 5px 15px 0px 15px;
 }

@@ -8,6 +8,7 @@ var holder = {
   A: [], AS: [], B: [], C: [], CS: [], D: [], DS: [], E: [], F: [], FS: [], G: [], GS: []
 };
 var data = {};
+var time = {};
 
 const Session = () => {
   const dispatch = useDispatch()
@@ -22,9 +23,21 @@ const Session = () => {
     return null;
   };
 
-  progress = progress.at(-1);
 
-  const jsx = []
+  progress = progress.at(-1);
+  //calculates time spent in previous session
+  const Time = (e) => {
+    let sec = Math.round(e/1000)
+    if (sec > 60) {
+      let mins = Math.floor(sec / 60);
+      sec = sec - (mins * 60);
+      return time.session = `${mins} minutes, ${sec} seconds!`;
+    }
+    return time.session = `${sec} seconds!`;
+  };
+  Time(progress.session)
+  console.log(time);
+  const jsx = [];
   const formatData = () => {
     //calculate time
     const time = progress.time / 1000;
@@ -54,15 +67,11 @@ const Session = () => {
         <tr key={i}>
           <th scope="row">{newKeys[i]}</th>
           <td>{data[newKeys[i]].length -1}</td>
-          <td>{data[newKeys[i]].at(-1)}</td>
+          <td>{data[newKeys[i]].at(-1)}%</td>
         </tr>
       )
     };
     return jsx;
-  }
-
-  function test() {
-    console.log(data)
   }
 
   return (
@@ -72,6 +81,9 @@ const Session = () => {
       <div className="styled">
         <h1 className="mx-auto font p-1" style={{width: '183px'}}>Finished!</h1>
         <div>
+        </div>
+        <div>
+          <p>This session lasted {time.session}</p>
         </div>
         <div>
         <table className="table table-hover">
@@ -86,9 +98,9 @@ const Session = () => {
             {formatData()}
           </tbody>
         </table>
+        <p>Great Work! Taking this quiz for a couple minutes a day is a great way to tune your ears to perfection! Click <a href="https://en.wikipedia.org/wiki/Absolute_pitch" target="_blank">here</a> to learn more about perfect pitch!</p>
         </div>
       </div>
-      {/* <div onClick={test}>aasdfadf</div> */}
     </div>
   );
 };
