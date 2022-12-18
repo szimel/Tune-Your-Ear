@@ -5,7 +5,7 @@ import Header from "../headers/header-reg"
 import '../../header-reg.css'
 
 var holder = {
-  A: [], AS: [], B: [], C: [], CS: [], D: [], DS: [], E: [], F: [], FS: [], G: [], GS: []
+  A: [], 'A#': [], B: [], C: [], 'C#': [], D: [], 'D#': [], E: [], F: [], 'F#': [], G: [], 'G#': []
 };
 var data = {};
 var time = {};
@@ -23,8 +23,18 @@ const Session = () => {
     return null;
   };
 
-
   progress = progress.at(-1);
+  if (progress === undefined || progress.length === 0) {
+    return (
+      <div className="color">
+        <Header />
+        <div className="placeholder"></div>
+        <div className="styled">
+          <p>Whoops, looks like you got here without completing a quiz. No worries, click <a href='http://localhost:3000/perfect-pitch'>here</a> to start a quiz!</p>
+        </div>
+      </div>
+    )
+  }
   //calculates time spent in previous session
   const Time = (e) => {
     let sec = Math.round(e/1000)
@@ -90,7 +100,7 @@ const Session = () => {
           <thead>
             <tr>
               <th scope="col">Note</th>
-              <th scope="col">Times Seen</th>
+              <th scope="col">Times Heard</th>
               <th scope="col">Percentage Correct</th>
             </tr>
           </thead>

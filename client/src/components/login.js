@@ -30,7 +30,7 @@ const Login = () => {
     <div>
       <Header />
       <div className='row mt-5 pt-5 '>
-        <div className="offset-4 col-md-3 color edges">
+        <div className="offset-4 col-md-3 ">
           <form onSubmit={handleSubmit(handleFormSubmit)}>
             <div className='form-group row col-8 offset-md-2 mt-2'>
               <label>Email</label>

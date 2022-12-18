@@ -44,7 +44,8 @@ const Easy = () => {
   const setNotes = (e) => {
     //for when <p> element on piano UI is clicked
     if (e.target.nodeName === 'P') {
-      const a = e.target.offsetParent.getAttribute('note').toString();
+      //ex: <li className='black ds' value='black' note='D#'></li>
+      const a = e.target.offsetParent.getAttribute('note').toString(); //grabs note value
       const parent = e.target.offsetParent;
       if (parent.getAttribute('id') === '') {
         return delete chosenNotes[a];
@@ -125,7 +126,7 @@ const Easy = () => {
           >
             <p>C</p>
           </li>
-          <li className="black cs" value='black' note='CS'
+          <li className="black cs" value='black' note='C#'
           ref={refContainer.CS}
           onClick={(e) => setAttribute(e)}
           >
@@ -137,7 +138,7 @@ const Easy = () => {
           >
             <p>D</p>
           </li>
-          <li className="black ds" value='black' note='DS'
+          <li className="black ds" value='black' note='D#'
           ref={refContainer.DS}
           onClick={(e) => setAttribute(e)}
           >
@@ -155,7 +156,7 @@ const Easy = () => {
           >
             <p>F</p>
           </li>
-          <li className="black fs" value='black' note='FS'
+          <li className="black fs" value='black' note='F#'
           ref={refContainer.FS}
           onClick={(e) => setAttribute(e)}
           >
@@ -167,7 +168,7 @@ const Easy = () => {
           >
             <p>G</p>
           </li>
-          <li className="black gs" value='black' note='GS'
+          <li className="black gs" value='black' note='G#'
           ref={refContainer.GS}
           onClick={(e) => setAttribute(e)}
           >
@@ -179,7 +180,7 @@ const Easy = () => {
           >
             <p className='hints-white'>A</p>
           </li>
-          <li className="black as" value='black' note='AS'
+          <li className="black as" value='black' note='A#'
           ref={refContainer.AS}
           onClick={(e) => setAttribute(e)}
           >

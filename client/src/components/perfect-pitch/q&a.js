@@ -14,9 +14,14 @@ const answerSchema = Yup.object().shape({
 });
 
 //object with data needed for note playback
-var chosenAudio = {};
+var chosenAudio = {
+  noNoteTwice: null
+};
 var sessionData = {
   results: []
+};
+var correctUserAnswer = {
+  jsx: null
 };
 
 
@@ -39,11 +44,13 @@ const Forms = () => {
       const data = {
         note: e.answer, correct: 1
       };
+      results(true, chosenAudio.answer);
       return sessionData.results.push(data);
     } else {
       const data = {
         note: chosenAudio.answer, correct: 0
       };
+      results(false, chosenAudio.answer);
       return sessionData.results.push(data);
     };
   };
@@ -64,25 +71,36 @@ const Forms = () => {
 
   //function to determine note 
   const chooseAudio = () => {
-    const options = Object.keys(chosenNotes)
+    const options = Object.keys(chosenNotes);
+    //more than one note selected
+    if(chosenAudio.files === undefined|| options.length < 2) {
+      return alert('Please select at least two notes!');
+    };
 
     //gives 0 or 1 for audio playing function
     const rand = Math.round(Math.random())
+    console.log(rand);
 
     //gives random number between 0 and options values
-    const random = Math.round((Math.random() * (options.length - 1)));
+    const max = Math.floor(options.length -1);
+    const random = Math.floor(Math.random() * (max - 0 + 1)) + 0;
 
     //grabs audio files of rand chosen note and give it to global var
-    const chosen = chosenNotes[options[random]];
-    return chosenAudio.files = chosen, chosenAudio.randNum = rand, chosenAudio.answer = options[random];
+    const chosen = chosenNotes[options[random]];//assigns audio to chosen
+    return chosenAudio.files = chosen, chosenAudio.randNum = rand, chosenAudio.answer = options[random];//.files = audio fies
+    //.rand = num 0 or 1, .answer = correct note name
   };
 
   //simple play audio function
   const playAudio = () => {
-    if(chosenAudio.files === undefined) {
-      alert('Please highlight piano notes!')
+    //makes sure more than 1 note is selected 
+    const options = Object.keys(chosenNotes);
+    if(chosenAudio.answer === chosenAudio.noNoteTwice) {
+      chooseAudio();//re calls chooseAudio so that no note is played twice
     };
-    let audioFiles = chosenAudio.files
+    let audioFiles = chosenAudio.files;
+    //stores note just played 
+    chosenAudio.noNoteTwice = chosenAudio.answer;
     audioFiles[chosenAudio.randNum].play();
   };
 
@@ -95,14 +113,12 @@ const Forms = () => {
   };
 
   const results = (e, note) => {
-    if(e === true) {
-      console.log('true');
-      return <p>Correct!</p>;
+    if(e === true){
+      const jsx = <p>Your answer was correct!</p>
+      return correctUserAnswer.jsx = jsx;
     } else if (e === false) {
-      console.log('false');
-      return <p>Incorrect, {note} was the answer.</p>;
-    } else {
-      return null;
+      const jsx = <p>Incorrect, the note played was {note}</p>;
+      return correctUserAnswer.jsx = jsx;
     };
   };
 
@@ -133,10 +149,6 @@ const Forms = () => {
   const replayButton = <button className='custom-built' onClick={playAudio}>Replay</button>;
   const doneButton = <button className="custom-built" onClick={backendCall}>Done</button>;
 
-  
-  function tester() {
-    console.log(sessionData);
-  };
 
 
   return (
@@ -160,10 +172,9 @@ const Forms = () => {
           <label className="did-floating-label">Your Answer</label>
         </div>
           <button className="custom-built " type="submit" style={{display: Show ? 'block' : 'none'}}>Submit</button>
-          <div>{results()}</div>
         </form>
+        {correctUserAnswer.jsx}
       </div>
-      <div onClick={tester}>oopsies</div>
     </div>
   );
 };
