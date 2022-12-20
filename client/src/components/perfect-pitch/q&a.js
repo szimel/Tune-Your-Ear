@@ -72,14 +72,14 @@ const Forms = () => {
   //function to determine note 
   const chooseAudio = () => {
     const options = Object.keys(chosenNotes);
+
     //more than one note selected
-    if(chosenAudio.files === undefined|| options.length < 2) {
+    if(options.length < 2) {
       return alert('Please select at least two notes!');
     };
 
     //gives 0 or 1 for audio playing function
     const rand = Math.round(Math.random())
-    console.log(rand);
 
     //gives random number between 0 and options values
     const max = Math.floor(options.length -1);
@@ -87,14 +87,17 @@ const Forms = () => {
 
     //grabs audio files of rand chosen note and give it to global var
     const chosen = chosenNotes[options[random]];//assigns audio to chosen
-    return chosenAudio.files = chosen, chosenAudio.randNum = rand, chosenAudio.answer = options[random];//.files = audio fies
-    //.rand = num 0 or 1, .answer = correct note name
+    chosenAudio.files = chosen; //audio files
+    chosenAudio.randNum = rand; //rand num 0 or 1
+    chosenAudio.answer = options[random]; //correct note name
+    handleClose(); //switches buttons play to replay
+    handleDone(); //switches buttons play to replay
+    playAudio(); //plays the actual sound
   };
 
   //simple play audio function
   const playAudio = () => {
-    //makes sure more than 1 note is selected 
-    const options = Object.keys(chosenNotes);
+    //doesn't play same note twice code
     if(chosenAudio.answer === chosenAudio.noNoteTwice) {
       chooseAudio();//re calls chooseAudio so that no note is played twice
     };
@@ -104,12 +107,12 @@ const Forms = () => {
     audioFiles[chosenAudio.randNum].play();
   };
 
-  //groups multiple calls
-  function onClick() {
-    chooseAudio();
-    playAudio();
-    handleClose();
-    handleDone();
+  //same note played twice code was messing up so replay gets its own function
+  const replayAudio = () => {
+    let audioFiles = chosenAudio.files;
+    //stores note just played 
+    chosenAudio.noNoteTwice = chosenAudio.answer;
+    audioFiles[chosenAudio.randNum].play();
   };
 
   const results = (e, note) => {
@@ -145,8 +148,8 @@ const Forms = () => {
   }
 
   //play buttons
-  const playButton = <button className='custom-built'onClick={onClick}>Play</button>;
-  const replayButton = <button className='custom-built' onClick={playAudio}>Replay</button>;
+  const playButton = <button className='custom-built'onClick={chooseAudio}>Play</button>;
+  const replayButton = <button className='custom-built' onClick={replayAudio}>Replay</button>;
   const doneButton = <button className="custom-built" onClick={backendCall}>Done</button>;
 
 
