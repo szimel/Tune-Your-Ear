@@ -4,12 +4,11 @@ const Progress = require('../models/progress')
 //logs users answer history
 exports.log = function(req, res, next) {
   User.findOne({_id: req.user._id}, function(err, user) {
-    console.log('ayo')
-    console.log(req.body)
     //creates new progress model with data
     const progress = new Progress.ProgressModel({
       session: req.body.time,
-      answers: req.body.results
+      answers: req.body.results,
+      date: req.body.date
     });
     progress.save(function (err, progress) {
       user.perfectPitch.push(progress);

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import '../../index.css'
+import '../../css/index.css'
 import Header from '../headers/header-reg';
 import { refContainer, noteSetup } from '../keys';
 import Forms from './q&a';

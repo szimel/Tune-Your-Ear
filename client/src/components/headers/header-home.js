@@ -1,4 +1,4 @@
-import '../../general.css';
+import '../../css/general.css';
 import HomeIcon from '@mui/icons-material/HomeRounded';
 import LogoutIcon from '@mui/icons-material/LogoutRounded';
 import { useDispatch, useSelector } from 'react-redux';

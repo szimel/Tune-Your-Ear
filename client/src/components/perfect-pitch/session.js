@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { currentUser } from "../../actions";
 import Header from "../headers/header-reg"
-import '../../header-reg.css'
+import '../../css/header-reg.css'
 
 var holder = {
   A: [], 'A#': [], B: [], C: [], 'C#': [], D: [], 'D#': [], E: [], F: [], 'F#': [], G: [], 'G#': []
@@ -70,7 +70,8 @@ const Session = () => {
         number += e.correct
       });
       number = (number / data[newKeys[i]].length) * 100
-      data[newKeys[i]].push(number)
+      number = Math.round(number);
+      data[newKeys[i]].push(number);//percentage calculation
     };
     for (let i = 0; i < (newKeys.length); i++) {
       jsx.push(
@@ -108,7 +109,7 @@ const Session = () => {
             {formatData()}
           </tbody>
         </table>
-        <p>Great Work! Taking this quiz for a couple minutes a day is a great way to tune your ears to perfection! Click <a href="https://en.wikipedia.org/wiki/Absolute_pitch" target="_blank">here</a> to learn more about perfect pitch!</p>
+        <p>Great Work! Taking this quiz for a couple minutes a day is a great way to tune your ears to perfection! <a href="https://en.wikipedia.org/wiki/Absolute_pitch" target="_blank">Click here</a> to learn more about perfect pitch!</p>
         </div>
       </div>
     </div>

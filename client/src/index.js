@@ -12,7 +12,7 @@ import Login from './components/login'
 import PerfectPitch from './components/perfect-pitch/perfect-pitch'
 import "bootstrap/dist/css/bootstrap.css";
 import Easy from './components/perfect-pitch/perfect-pitch-quiz'
-import Progress from './components/progress'
+import Progress from './components/progress/progress'
 import Session from './components/perfect-pitch/session'
 
 

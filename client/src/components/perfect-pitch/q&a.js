@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { userAnswer } from "../../actions";
-import '../../general.css'
+import '../../css/general.css'
 import { useNavigate } from "react-router-dom";
 
 
@@ -17,7 +17,9 @@ const answerSchema = Yup.object().shape({
 var chosenAudio = {
   noNoteTwice: null
 };
-var sessionData = {
+var sessionData = {//stores all data for dispatch
+  date: null,
+  time: null,
   results: []
 };
 var correctUserAnswer = {
@@ -128,8 +130,9 @@ const Forms = () => {
   //so time is added as soon as page is loaded
   const session = () => {
     if(sessionData.results.length === 0) {
-      const time = new Date().getTime();
-      return sessionData.time = time
+      const time = new Date()
+      const total = `${time.getMonth() + 1}/${time.getDate()}`
+      return sessionData.time = time.getTime(), sessionData.date = total;
     };
   };
   session();
@@ -140,6 +143,8 @@ const Forms = () => {
     const time = (new Date().getTime() - sessionData.time)
     const format = {
       time: time,
+      date: '12/22',
+      // date: sessionData.date,
       results: sessionData.results
     };
     dispatch(userAnswer(format, () => {

@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const ProgressSchema = new Schema({
   session: {},
   answers: [],
+  date: String
 });
 
 const ProgressModel = mongoose.model("Progress", ProgressSchema);

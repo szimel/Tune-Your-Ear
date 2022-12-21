@@ -1,7 +1,7 @@
 import image from './img/2.jpg';
 import Header from './components/headers/header-home';
 import { useSelector } from 'react-redux';
-import './general.css'
+import './css/general.css'
 
 function App() {
     const authenticated = useSelector(state => state.auth.authenticated);
