@@ -42,7 +42,7 @@ const Forms = () => {
     //update session data global var
     if (chosenAudio.answer === e.answer.toUpperCase()) {
       const data = {
-        note: e.answer, correct: 1
+        note: chosenAudio.answer, correct: 1
       };
       results(true, chosenAudio.answer);
       return sessionData.results.push(data);
