@@ -78,7 +78,7 @@
 
 /* q&a form css */
 #builder-container {
-  background: #f2f2f2;
+  background: #fafafa;
   width: 40vw;
   min-height: 250px;
   margin: auto;
@@ -126,7 +126,7 @@
   left: 16px;
   top: 8px;
   padding: 0 5px;
-  background: #f2f2f2;
+  background: #fafafa;
   transition: 0.2s ease all;
   -moz-transition: 0.2s ease all;
   -webkit-transition: 0.2s ease all;
@@ -139,7 +139,7 @@
   height: 36px;
   padding: 0 20px;
   margin-top: 20px;
-  background: #f2f2f2;
+  background: #fafafa;
   color: #321313;
   border: 1px solid #271010;
   border-radius: 4px;

@@ -42,7 +42,6 @@ const Graph = () => {
   
   //graph data
   const labels = Object.keys(dataOverlord.answersBySession)
-  let baseline = 100;
   const data = {
     labels,
     datasets: [
@@ -52,7 +51,7 @@ const Graph = () => {
           let holder = 0;
           dataOverlord.answersBySession[e].map(p => {
             if (p.correct === 1) {
-              return holder += p.correct
+              return holder += p.correct;
             }
           });
           return holder;

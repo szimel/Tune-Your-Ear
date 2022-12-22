@@ -143,8 +143,8 @@ const Forms = () => {
     const time = (new Date().getTime() - sessionData.time)
     const format = {
       time: time,
-      date: '12/22',
-      // date: sessionData.date,
+      // date: '12/23',
+      date: sessionData.date,
       results: sessionData.results
     };
     dispatch(userAnswer(format, () => {
