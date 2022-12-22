@@ -1,5 +1,7 @@
 import React from "react";
 
+//keys for saving space
+
 //creates sound variables
 const audioSetup = {
   A1: new Audio('/notes/A-1.mp3'),
