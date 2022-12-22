@@ -161,9 +161,9 @@ const Forms = () => {
 
   return (
     <div id="builder-container" >
-      <div className="mx-auto style" style={{width: '380px'}}>
+      <div className="mx-auto style" style={{width: '740px'}}>
         <p className="font">
-          Highlighted piano keys will appear in quiz!
+          The piano above shows which notes are in the quiz. Click on piano note to add or remove!
         </p>
       </div>
       <div className="mx-auto " style={{width: '490px'}}>
