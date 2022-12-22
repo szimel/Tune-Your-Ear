@@ -24,7 +24,7 @@ function App() {
         <Header />
         <div className='home'>
           <div style={{width: '500px', margin: 'auto', background: 'rgb(218, 218, 218)', height: '300px'}}>
-            <p className='font m-3'>'im gonna killy willy my selfie welfie' said Samuel, feverently</p>
+            <p className='font m-3'>*HOW TO INSTRUCTIONS*</p>
           </div>
         </div>
       </div>
