@@ -2,13 +2,10 @@ import axios from "axios";
 import { AUTH_USER, AUTH_ERROR, USER_PROFILE, CURRENT_USER, DIFFICULTY } from "./types";
 
 
-const hacky = 'http://localhost:5000';
-
-
 //handle sign up
 export const signup = (formData, callback) => dispatch => {
   axios.post(
-    `${hacky}/auth/signup`,
+    `/auth/signup`,
     formData
   ).then(function (response) {
     dispatch({ type: AUTH_USER, payload: response.data });
@@ -23,7 +20,7 @@ export const signup = (formData, callback) => dispatch => {
 //handle logins
 export const login = (formData, callback) => dispatch => {
   axios.post(
-    `${hacky}/auth/signin`,
+    `/auth/signin`,
     formData
   ).then(function (response) {
     dispatch({ type: AUTH_USER, payload: response.data });
@@ -50,7 +47,7 @@ export const userAnswer = (data, callback) => dispatch => {
       Authorization: 'Bearer ' + localStorage.getItem('token'),
     }
   };
-  axios.post(`${hacky}/response`, data, config)
+  axios.post(`/response`, data, config)
   .then(function (response) {
     dispatch({ type: USER_PROFILE, payload: response.data });
     callback();
@@ -69,7 +66,7 @@ export const currentUser = () => dispatch => {
   }
 
   axios.get(
-    `${hacky}/auth/current_user`,
+    `/auth/current_user`,
     config
     ).then(function (response) {
       dispatch({ type: CURRENT_USER, payload: response.data });
@@ -83,7 +80,7 @@ export const currentUser = () => dispatch => {
 export const quizMode = (e, callback) => dispatch => {
   
   axios.post(
-    `${hacky}/quiz`, {e})
+    `/quiz`, {e})
     .then(function (response) {
       dispatch({ type: DIFFICULTY, payload: response.data });
       callback();
