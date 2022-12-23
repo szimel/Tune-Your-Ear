@@ -1,4 +1,4 @@
 module.exports = {
-  MONGODB_URI: 'mongodb://127.0.0.1/TuneYourEar',
+  MONGODB_URI: 'mongodb://localhost/TuneYourEar',
   TOKEN_SECRET: 'helloworld'
 };
