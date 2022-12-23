@@ -50,6 +50,34 @@ const Progress = () => {
     return dataOverlord.answersBySession[e] = [];
   });
 
+  //find notes with highest and lowest ratio
+  const noteFinder = () => {
+    const notes = Object.keys(dataOverlord.answersByNote);
+    let standIn = dataOverlord.answersByNote
+
+    //finds the biggest ratio
+    let biggestNum = 0
+    for (let i = 0; i < notes.length; i++) {
+      let positive = standIn[notes[i]].filter(e => e.correct === 1)
+      positive = positive.length / standIn[notes[i]].length;
+      if(biggestNum < positive && positive != 0) {
+        biggestNum = positive;
+        dataOverlord.bestNote = notes[i];
+      };
+    };
+
+    //find the smallest ratio
+    let smallestNum = 0
+    for (let i = 0; i < notes.length; i++) {
+      let positive = standIn[notes[i]].filter(e => e.correct === -1);
+      positive = positive.length / standIn[notes[i]].length;
+      if(smallestNum < positive && positive != 0) {
+        smallestNum = positive;
+        dataOverlord.worstNote = notes[i];
+      };
+    };
+  };
+
   //formats dataOverlord 
   const dataFormat = () => {
     let answerHolder = [];
@@ -64,9 +92,9 @@ const Progress = () => {
     });
     dataOverlord.answers = answerHolder;
     dataOverlord.session = sessionHolder;
+    noteFinder();
     }
   dataFormat();
-  console.log(dataOverlord);
 
   //changes time into hours/mins/sec
   const time = () => {
@@ -85,29 +113,7 @@ const Progress = () => {
     return dataOverlord.time = `${sec} seconds!`;
   };
   time();
-  
-  //finds the note with highest ratio correct vs incorrect
-  const bestNote = () => {
-    const notes = Object.keys(dataOverlord.answersByNote)
-    let a = 0;
-    let b = -10000;// so that a is always bigger on first run
-    let c = 10000
-    notes.map(e => { 
-      dataOverlord.answersByNote[e].map(p => {
-        return a += p.correct
-      });
-      if((a / dataOverlord.answersByNote[e].length) > b) {
-        b = a;
-        a = 0;
-        dataOverlord.bestNote = e;
-      } else if((a / dataOverlord.answersByNote[e].length) < c) {
-        c = a;
-        c = 0
-        dataOverlord.worstNote = e
-      };
-    });
-  };
-  bestNote();
+  console.log(dataOverlord);
 
 
   return (
