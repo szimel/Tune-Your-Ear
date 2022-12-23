@@ -163,6 +163,7 @@
   height: 35px;
   border-radius: 5px;
   border: 1px gray solid;
+  background-color: #fafafa;
   color: gray;
   display: inline;
   margin-right: 5px;
@@ -173,4 +174,18 @@
 }
 .custom-built:active {
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+}
+
+/* app.js unlogged in text home page */
+.home p {
+  margin: 0 20px;
+  padding: 10px 0;
+}
+
+/* logged in info part */
+.popup {
+  background: #fafafa;
+  width: 400px;
+  height: 75px;
+  margin: auto
 }
