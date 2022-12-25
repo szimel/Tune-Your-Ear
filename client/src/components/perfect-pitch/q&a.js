@@ -2,16 +2,13 @@ import { chosenNotes } from "./perfect-pitch-quiz";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { userAnswer } from "../../actions";
 import '../../css/general.css'
 import { useNavigate } from "react-router-dom";
+var _ = require('lodash');
 
-
-const answerSchema = Yup.object().shape({
-  answer: Yup.string().max(2, 'Invalid answer!').required()
-});
 
 //object with data needed for note playback
 var chosenAudio = {
@@ -25,13 +22,18 @@ var sessionData = {//stores all data for dispatch
 var correctUserAnswer = {
   jsx: null
 };
+//var that sets the names of the three buttons 
+var buttons = {
+  options: ['this', 'dummy', 'fillers'],
+  random: [0, 1, 2],
+  run: true,
+};
 
 
 const Forms = () => {
-  //yup setup for grabbing user answers
-  const { register, handleSubmit, formState: { errors }} = useForm({
-    resolver: yupResolver(answerSchema)
-  });
+  let refOne = React.createRef();
+  let refTwo = React.createRef();
+  let refThree = React.createRef();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -39,21 +41,28 @@ const Forms = () => {
 
   //determine if user answer is correct and make backend call
   const handleFormSubmit = (e) => {
+    //so only one answers is submitted
+    if(buttons.run === false) {
+      return null;
+    };
     //reset buttons 
     handleShow();
+    //clear input
     //update session data global var
-    if (chosenAudio.answer === e.answer.toUpperCase()) {
+    if (chosenAudio.answer === e.target.innerText) {
       const data = {
         note: chosenAudio.answer, correct: 1
       };
       results(true, chosenAudio.answer);
-      return sessionData.results.push(data);
+      e.target.setAttribute('id', 'button-right')
+      return sessionData.results.push(data), buttons.run = false;
     } else {
       const data = {
         note: chosenAudio.answer, correct: 0
       };
+      e.target.setAttribute('id', 'button-wrong')
       results(false, chosenAudio.answer);
-      return sessionData.results.push(data);
+      return sessionData.results.push(data), buttons.run = false;
     };
   };
 
@@ -61,7 +70,17 @@ const Forms = () => {
   const [show, setShow] = useState(true);
   const [Show, SetShow] = useState(false);
   const [done, setDone] = useState(false)
+  const [Button, setButton] = useState(false);
   const handleDone = () => setDone(true);
+  const handleButtonShow = () => {
+    setButton(true);
+    refOne.current.setAttribute('id', 'button-general');
+    refTwo.current.setAttribute('id', 'button-general');
+    refThree.current.setAttribute('id', 'button-general');
+  };
+  // const handleButtonsClose = () => {
+  //   setButton(false);
+  // }
   const handleShow = () => {
       setShow(true);
       SetShow(false);
@@ -76,8 +95,8 @@ const Forms = () => {
     const options = Object.keys(chosenNotes);
 
     //more than one note selected
-    if(options.length < 2) {
-      return alert('Please select at least two notes!');
+    if(options.length < 3) {
+      return alert('Please select at least three notes!');
     };
 
     //gives 0 or 1 for audio playing function
@@ -92,10 +111,29 @@ const Forms = () => {
     chosenAudio.files = chosen; //audio files
     chosenAudio.randNum = rand; //rand num 0 or 1
     chosenAudio.answer = options[random]; //correct note name
+    buttons.run = true;//so that the handleFormSubmit runs
+    setButtons();//puts three notes w correct in array
     handleClose(); //switches buttons play to replay
+    handleButtonShow();//shows options buttons
     handleDone(); //switches buttons play to replay
     playAudio(); //plays the actual sound
+    results(null);//so 'answer was wrong' goes away
+
   };
+
+  //sets three user options to choose from 
+  const setButtons = () => {
+    let notes = Object.keys(chosenNotes);
+    let idk =_.sampleSize(notes, 2)//grabs two wrongs notes
+    let threeNums = _.sampleSize([0, 1, 2], 3);//randomly chooses three random
+    //re runs if wrong two contain answer
+    if(idk[1] === chosenAudio.answer || idk[0] === chosenAudio.answer) {
+      return setButtons();
+    };
+    idk.push(chosenAudio.answer);
+    return buttons.options = idk, buttons.random = threeNums;
+  };
+  console.log(buttons);//STOPPED HERE NEED TO GET ALL THREE INTO ARRAY TO RANDOMIZE BUTTONS DISPLAYED
 
   //simple play audio function
   const playAudio = () => {
@@ -124,7 +162,9 @@ const Forms = () => {
     } else if (e === false) {
       const jsx = <p>Incorrect, the note played was {note}</p>;
       return correctUserAnswer.jsx = jsx;
-    };
+    } else if(e === null) {
+      return correctUserAnswer.jsx = null;
+    }
   };
 
   //so time is added as soon as page is loaded
@@ -153,35 +193,49 @@ const Forms = () => {
   }
 
   //play buttons
+  let one = buttons.options[buttons.random[0]];
+  let two = buttons.options[buttons.random[1]];
+  let three = buttons.options[buttons.random[2]]
   const playButton = <button className='custom-built'onClick={chooseAudio}>Play</button>;
   const replayButton = <button className='custom-built' onClick={replayAudio}>Replay</button>;
   const doneButton = <button className="custom-built" onClick={backendCall}>Done</button>;
+  const buttonOne = <button id="button-general" onClick={handleFormSubmit} ref={refOne}>
+    {one}</button>;
+  const buttonTwo = <button id="button-general" onClick={handleFormSubmit} ref={refTwo}>
+    {two}</button>;
+  const buttonThree = <button id="button-general" onClick={handleFormSubmit} ref={refThree}>
+    {three}</button>;
 
 
 
   return (
     <div id="builder-container" >
-      <div className="mx-auto style" style={{width: '740px'}}>
+     <div className="mx-auto style" style={{width: '500px'}}>
         <p className="font">
-          The piano above shows which notes are in the quiz. Click on piano note to add or remove!
+          The piano above shows which notes are in the quiz. Click on the piano note to add or remove! Hit play to start, and choose from one of the three options. 
         </p>
       </div>
+
       <div className="mx-auto " style={{width: '490px'}}>
-      <div>
-        {show ? playButton : null}
-        {Show ? replayButton: null}
-        {done ? doneButton: null}
-
-      </div>
-
-        <form onSubmit={handleSubmit(handleFormSubmit)}>
-        <div className="did-floating-label-content">
-          <input className="did-floating-input" type="text" placeholder=" " {...register('answer', {required: true})}/><p id="error"><em>{errors.answer?.message}</em></p>
-          <label className="did-floating-label">Your Answer</label>
+        <div>
+          {show ? playButton : null}
+          {Show ? replayButton: null}
+          {done ? doneButton: null}
         </div>
-          <button className="custom-built " type="submit" style={{display: Show ? 'block' : 'none'}}>Submit</button>
-        </form>
-        {correctUserAnswer.jsx}
+        <div>
+          {Button ? buttonOne: null}
+          {Button ? buttonTwo: null}
+          {Button ? buttonThree: null}
+        </div>
+
+          {/* <form onSubmit={handleSubmit(handleFormSubmit)}>
+          <div className="did-floating-label-content">
+            <input className="did-floating-input" type="text" ref={inputRef} placeholder=" " {...register('answer', {required: true})}/><p id="error"><em>{errors.answer?.message}</em></p>
+            <label className="did-floating-label">Your Answer</label>
+          </div>
+            <button className="custom-built " type="submit" style={{display: Show ? 'block' : 'none'}}>Submit</button>
+          </form> */}
+          {correctUserAnswer.jsx}
       </div>
     </div>
   );

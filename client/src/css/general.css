@@ -79,7 +79,7 @@
 /* q&a form css */
 #builder-container {
   background: #fafafa;
-  width: 40vw;
+  width: 550px;
   min-height: 250px;
   margin: auto;
   border-radius: 2em;
@@ -105,6 +105,7 @@
 
 .style p {
   padding-top: 30px;
+  width: 500;
 }
 
 .Style {
@@ -188,4 +189,45 @@
   width: 400px;
   height: 75px;
   margin: auto
+}
+
+/* id for button answers before being chosen*/
+#button-general {
+  width: 95px;
+  height: 50px;
+  border-radius: 5px;
+  border: 1px gray solid;
+  background-color: rgb(128, 169, 186);
+  color: white;
+  font-size: 20px;
+  display: inline;
+  margin-right: 5px;
+  margin-top: 10px;
+}
+#button-general:hover {
+  background-color: rgb(53, 151, 162);
+}
+#button-wrong {
+  width: 95px;
+  height: 50px;
+  border-radius: 5px;
+  border: 1px gray solid;
+  background-color: rgb(186, 128, 128);
+  color: white;
+  font-size: 20px;
+  display: inline;
+  margin-right: 5px;
+  margin-top: 10px;
+}
+#button-right {
+  width: 95px;
+  height: 50px;
+  border-radius: 5px;
+  border: 1px gray solid;
+  background-color: rgb(129, 186, 128);
+  color: white;
+  font-size: 20px;
+  display: inline;
+  margin-right: 5px;
+  margin-top: 10px;
 }
