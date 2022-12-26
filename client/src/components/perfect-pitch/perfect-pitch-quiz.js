@@ -4,6 +4,8 @@ import '../../css/index.css'
 import Header from '../headers/header-reg';
 import { refContainer, noteSetup } from '../keys';
 import Forms from './q&a';
+import HelpCenterRoundedIcon from '@mui/icons-material/HelpCenterRounded';
+import introJs from 'intro.js';
 
 
 //controls which notes are being played
@@ -112,6 +114,11 @@ const Easy = () => {
       setNotes(e);
     };
   };
+
+  //runs tour guide thing
+  const run = () => {
+    introJs ().start();
+  }
   
   return (
     <div>
@@ -119,14 +126,21 @@ const Easy = () => {
         <Header />
       </div>
       <div className='padding'>
-        <ul className="set " id="piano-ul">
+        <ul data-intro="Shows and controls which notes appear on the quiz"className="set " id="piano-ul">
+          <HelpCenterRoundedIcon
+             sx={{ 
+              color: "white", 
+              borderRadius: "50%",
+             }}
+             onClick={run}
+           />
           <li className="white c" value='white' note='C'
           ref={refContainer.C}
           onClick={(e) => setAttribute(e)}
           >
             <p>C</p>
           </li>
-          <li className="black cs" value='black' note='C#'
+          <li className="black cs" data-intro="Click on a note, like this one, to add it to the quiz. If it is highlighted, then it is in the quiz." value='black' note='C#'
           ref={refContainer.CS}
           onClick={(e) => setAttribute(e)}
           >

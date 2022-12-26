@@ -30,7 +30,7 @@ const Test = () => {
         <div className='row'>
           <Dropdown className='mt-3'>
             <Dropdown.Toggle variant="success" id="dropdown-basic">
-              Dropdown Button
+              Select a quiz
             </Dropdown.Toggle>
             <Dropdown.Menu>
               <Dropdown.Item  onClick={() => SetChosenMode('easy')}>C, E, G</Dropdown.Item>

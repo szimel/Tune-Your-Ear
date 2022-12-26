@@ -7,7 +7,9 @@ import { useDispatch } from "react-redux";
 import { userAnswer } from "../../actions";
 import '../../css/general.css'
 import { useNavigate } from "react-router-dom";
+import HelpCenterRoundedIcon from '@mui/icons-material/HelpCenterRounded';
 var _ = require('lodash');
+
 
 
 //object with data needed for note playback
@@ -212,7 +214,7 @@ const Forms = () => {
     <div id="builder-container" >
      <div className="mx-auto style" style={{width: '500px'}}>
         <p className="font">
-          The piano above shows which notes are in the quiz. Click on the piano note to add or remove! Hit play to start, and choose from one of the three options. 
+          The piano above shows which notes are in the quiz (try clicking <HelpCenterRoundedIcon /> for more info). Click play to hear a note. Click the done button when you're ready for the quiz to end! 
         </p>
       </div>
 
