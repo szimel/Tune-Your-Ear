@@ -26,10 +26,10 @@ const HeaderHome = () => {
     return (
       <div>
         <ul id="nav-home">
-          <li><a href="/"><HomeIcon /></a></li>
-          <li><a href='perfect-pitch'>Perfect Pitch</a></li>
-          <li><a href='/progress'>Progress</a></li>
-          <li id='auth-nav' onClick={handleSignOutClick}><a href="/"><LogoutIcon /></a></li>
+          <li data-intro="Click here to return to the main menu."><a href="/"><HomeIcon /></a></li>
+          <li data-intro="This will take you to the perfect pitch quiz"><a href='perfect-pitch'>Perfect Pitch</a></li>
+          <li data-intro="This will take you to see your overall progress! If this is your first time, try taking a quiz first!"><a href='/progress'>Progress</a></li>
+          <li data-intro="Click here to log out!" id='auth-nav' onClick={handleSignOutClick}><a href="/"><LogoutIcon /></a></li>
         </ul>
       </div>
     )
@@ -38,9 +38,9 @@ const HeaderHome = () => {
   return(
     <div>
       <ul id="nav-home">
-        <li><a href="/"><HomeIcon /></a></li>
-        <li><a href="/login">Log In</a></li>
-        <li><a href='/signup'>Sign Up</a></li>
+        <li data-intro="Click here to return to the main menu"><a href="/"><HomeIcon /></a></li>
+        <li data-intro="Click here to log in (if you have already made an account)! "><a href="/login">Log In</a></li>
+        <li data-intro="Click here to create an account!"><a href='/signup'>Sign Up</a></li>
       </ul>
     </div>
   )
