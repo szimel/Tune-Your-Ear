@@ -1,5 +1,5 @@
 import axios from "axios";
-import { AUTH_USER, AUTH_ERROR, USER_PROFILE, CURRENT_USER, DIFFICULTY } from "./types";
+import { AUTH_USER, AUTH_ERROR, USER_PROFILE, CURRENT_USER, DIFFICULTY, USER_PROFILE_CHORD } from "./types";
 
 
 //handle sign up
@@ -50,6 +50,23 @@ export const userAnswer = (data, callback) => dispatch => {
   axios.post(`/response`, data, config)
   .then(function (response) {
     dispatch({ type: USER_PROFILE, payload: response.data });
+    callback();
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+};
+
+export const chordUserAnswer = (data, callback) => dispatch => {
+  console.log('got here')
+  const config = {
+    headers: {
+      Authorization: 'Bearer ' + localStorage.getItem('token'),
+    }
+  };
+  axios.post(`/response/chord`, data, config)
+  .then(function (response) {
+    dispatch({ type: USER_PROFILE_CHORD, payload: response.data });
     callback();
   })
   .catch(function (error) {

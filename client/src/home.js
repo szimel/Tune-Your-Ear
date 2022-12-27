@@ -21,7 +21,9 @@ function App() {
   };
 
   const run = () => {
-    introJs ().start();
+    introJs().setOptions({
+      showProgress: true,
+    }).start();
   }
 
   if (authenticated) {
@@ -31,7 +33,8 @@ function App() {
           <div>
             <ul id="nav-home">
               <li data-intro="Click here to return to the main menu."><a href="/"><HomeIcon /></a></li>
-              <li data-intro="This will take you to the perfect pitch quiz"><a href='perfect-pitch'>Perfect Pitch</a></li>
+              <li data-intro="This will take you to the perfect pitch quiz - a note recognition quiz"><a href='perfect-pitch'>Perfect Pitch</a></li>
+              <li data-intro="This will take you to the chord quiz - a chord recognition quiz"><a href='chords'>Chord Recognition</a></li>
               <li data-intro="This will take you to see your overall progress! If this is your first time, try taking a quiz first!"><a href='/progress'>Progress</a></li>
               <li data-intro="Click here to log out!" id='auth-nav' onClick={handleSignOutClick}><a href="/"><LogoutIcon /></a></li>
             </ul>

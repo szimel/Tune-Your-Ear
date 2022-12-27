@@ -17,6 +17,12 @@ const Test = () => {
     }));
   };
 
+    // //returns logged out user to home page
+    // const authenticated = useSelector(state => state.auth);
+    // if(!authenticated.authenticated) {
+    //   return navigate("/perfect-pitch/session", { replace: true });
+    // }
+
   return (
     <div>
       <div>

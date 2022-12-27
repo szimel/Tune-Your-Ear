@@ -3,7 +3,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from 'yup';
 import { useForm } from "react-hook-form";
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { userAnswer } from "../../actions";
 import '../../css/general.css'
 import { useNavigate } from "react-router-dom";
@@ -39,6 +39,13 @@ const Forms = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  //returns logged out user to home page
+  // const authenticated = useSelector(state => state.auth);
+  // if(!authenticated.authenticated) {
+  //   return navigate("/perfect-pitch/session", { replace: true });
+  // }
+  
 
 
   //determine if user answer is correct and make backend call
@@ -185,7 +192,6 @@ const Forms = () => {
     const time = (new Date().getTime() - sessionData.time)
     const format = {
       time: time,
-      // date: '12/23',
       date: sessionData.date,
       results: sessionData.results
     };
@@ -214,7 +220,7 @@ const Forms = () => {
     <div id="builder-container" >
      <div className="mx-auto style" style={{width: '500px'}}>
         <p className="font">
-          The piano above shows which notes are in the quiz (try clicking <HelpCenterRoundedIcon /> for more info). Click play to hear a note. Click the done button when you're ready for the quiz to end! 
+          The piano above shows which notes are in the quiz (try clicking <HelpCenterRoundedIcon /> above). Click play to hear a note. Click the done button when you're ready for the quiz to end! 
         </p>
       </div>
 
@@ -229,14 +235,6 @@ const Forms = () => {
           {Button ? buttonTwo: null}
           {Button ? buttonThree: null}
         </div>
-
-          {/* <form onSubmit={handleSubmit(handleFormSubmit)}>
-          <div className="did-floating-label-content">
-            <input className="did-floating-input" type="text" ref={inputRef} placeholder=" " {...register('answer', {required: true})}/><p id="error"><em>{errors.answer?.message}</em></p>
-            <label className="did-floating-label">Your Answer</label>
-          </div>
-            <button className="custom-built " type="submit" style={{display: Show ? 'block' : 'none'}}>Submit</button>
-          </form> */}
           {correctUserAnswer.jsx}
       </div>
     </div>

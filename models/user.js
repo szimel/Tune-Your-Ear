@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const Progress = require('./progress');
 var crypto = require('crypto');
+const progressChord = require('./progress-chord');
 
 
 // very basic stored info on users - need to add progress, perfect pitch models
@@ -10,6 +11,7 @@ const UserSchema = new Schema ({
   hash: String,
   salt: String,
   perfectPitch: [{type: Progress.ProgressSchema}],
+  chordQuiz: [{type: progressChord.ProgressChordSchema}]
 });
 
 UserSchema.methods.setPassword = function(password){

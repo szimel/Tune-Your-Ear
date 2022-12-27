@@ -12,4 +12,5 @@ module.exports = function(app) {
   app.get('/auth/current_user', requireAuth, Authentication.currentUser);
   app.post('/response', requireAuth, Response.log);
   app.post('/quiz', Response.difficulty);
+  app.post('/response/chord', requireAuth, Response.chord)
 };

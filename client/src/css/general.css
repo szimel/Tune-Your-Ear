@@ -114,7 +114,7 @@
 }
 
 /* floating label stuff */
-.did-floating-label-content {
+/* .did-floating-label-content {
   position: relative;
   margin-bottom: 20px;
 }
@@ -149,7 +149,7 @@
 .did-floating-input:focus ~ .did-floating-label {
   top: -8px;
   font-size: 13px;
-}
+} */
 
 /* error code for q and a */
 #error {
@@ -231,3 +231,12 @@
   margin-right: 5px;
   margin-top: 10px;
 }
+
+/* tooltip editing */
+/* .customTooltip * {
+  color: black;
+  font-size: 18px;
+}
+.customTooltip .introjs-tooltip-title {
+  color: #0a41c9;
+} */

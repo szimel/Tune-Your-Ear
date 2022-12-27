@@ -1,9 +1,25 @@
 import React from "react";
 
-//keys for saving space
+//creates sound variabels for 
+export const chordAudioSetup = {
+  A: new Audio('/Major-Chords/a-major-chord.mp3'),
+  'A#': new Audio('/Major-Chords/a-sharp-major-chord.mp3'),
+  B: new Audio('/Major-Chords/b-major-chord.mp3'),
+  C: new Audio('/Major-Chords/c-major-chord.mp3'),
+  'C#': new Audio('/Major-Chords/c-sharp-major-chord.mp3'),
+  D: new Audio('/Major-Chords/d-major-chord.mp3'),
+  'D#': new Audio('/Major-Chords/d-sharp-major-chord.mp3'),
+  E: new Audio('/Major-Chords/e-major-chord.mp3'),
+  F: new Audio('/Major-Chords/f-major-chord.mp3'),
+  "F#": new Audio('/Major-Chords/f-sharp-major-chord.mp3'),
+  G: new Audio('/Major-Chords/g-major-chord.mp3'),
+  "G#": new Audio('/Major-Chords/g-sharp-major-chord.mp3')
+};
 
-//creates sound variables
-const audioSetup = {
+//classifies each chord with audio sounds - not needed until another octives is added
+
+//creates sound variables for notes
+const noteAudioSetup = {
   A1: new Audio('/notes/A-1.mp3'),
   A2: new Audio('/notes/A-2.mp3'),
   AS1: new Audio('/notes/AS-1.mp3'),
@@ -32,48 +48,48 @@ const audioSetup = {
 
 //classifies each note with audio sounds
 export const noteSetup = {
-  C: [audioSetup.C1, audioSetup.C2],
-  'C#': [audioSetup.CS1, audioSetup.CS2],
-  D: [audioSetup.D1, audioSetup.D2],
-  'D#': [audioSetup.DS1, audioSetup.DS2],
-  E: [audioSetup.E1, audioSetup.E2],
-  F: [audioSetup.F1, audioSetup.F2],
-  'F#': [audioSetup.FS1, audioSetup.FS2],
-  G: [audioSetup.G1, audioSetup.G2],
-  'G#': [audioSetup.GS1, audioSetup.GS2],
-  A: [audioSetup.A1, audioSetup.A2],
-  'A#': [audioSetup.AS1, audioSetup.AS2],
-  B: [audioSetup.B1, audioSetup.B2]
+  C: [noteAudioSetup.C1, noteAudioSetup.C2],
+  'C#': [noteAudioSetup.CS1, noteAudioSetup.CS2],
+  D: [noteAudioSetup.D1, noteAudioSetup.D2],
+  'D#': [noteAudioSetup.DS1, noteAudioSetup.DS2],
+  E: [noteAudioSetup.E1, noteAudioSetup.E2],
+  F: [noteAudioSetup.F1, noteAudioSetup.F2],
+  'F#': [noteAudioSetup.FS1, noteAudioSetup.FS2],
+  G: [noteAudioSetup.G1, noteAudioSetup.G2],
+  'G#': [noteAudioSetup.GS1, noteAudioSetup.GS2],
+  A: [noteAudioSetup.A1, noteAudioSetup.A2],
+  'A#': [noteAudioSetup.AS1, noteAudioSetup.AS2],
+  B: [noteAudioSetup.B1, noteAudioSetup.B2]
 };
 
 
 //puts into simple form for function
-export const audio = [
-  audioSetup.A1,
-  audioSetup.A2,
-  audioSetup.AS1,
-  audioSetup.AS2,
-  audioSetup.B1,
-  audioSetup.B2,
-  audioSetup.C1,
-  audioSetup.C2,
-  audioSetup.CS1,
-  audioSetup.CS2,
-  audioSetup.D1,
-  audioSetup.D2,
-  audioSetup.DS1,
-  audioSetup.DS2,
-  audioSetup.E1,
-  audioSetup.E2,
-  audioSetup.F1,
-  audioSetup.F2,
-  audioSetup.FS1,
-  audioSetup.FS2,
-  audioSetup.G1,
-  audioSetup.G2,
-  audioSetup.GS1,
-  audioSetup.GS2
-];
+// export const audio = [
+//   noteAudioSetup.A1,
+//   noteAudioSetup.A2,
+//   noteAudioSetup.AS1,
+//   noteAudioSetup.AS2,
+//   noteAudioSetup.B1,
+//   noteAudioSetup.B2,
+//   noteAudioSetup.C1,
+//   noteAudioSetup.C2,
+//   noteAudioSetup.CS1,
+//   noteAudioSetup.CS2,
+//   noteAudioSetup.D1,
+//   noteAudioSetup.D2,
+//   noteAudioSetup.DS1,
+//   noteAudioSetup.DS2,
+//   noteAudioSetup.E1,
+//   noteAudioSetup.E2,
+//   noteAudioSetup.F1,
+//   noteAudioSetup.F2,
+//   noteAudioSetup.FS1,
+//   noteAudioSetup.FS2,
+//   noteAudioSetup.G1,
+//   noteAudioSetup.G2,
+//   noteAudioSetup.GS1,
+//   noteAudioSetup.GS2
+// ];
 
 
 //creates ref for UI piano
