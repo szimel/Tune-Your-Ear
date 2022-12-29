@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { currentUser } from "../../actions";
 import Header from "../headers/header-reg";
 
@@ -16,6 +17,7 @@ const SessionChord = () => {
     dispatch(currentUser());
   }, []);
 
+  const navigate = useNavigate();
   //if user isn't logged in, send to home screen
   const authenticated = useSelector(state => state.auth.authenticated);
   const notSignedIn = () => {
