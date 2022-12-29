@@ -36,7 +36,7 @@ const Test = () => {
         <p className='white'>this is such a hacky fix and if you find this I truly apologize</p>
         <br/>
         <h2 className='font'>Perfect Pitch Training</h2>
-        <p className='mt-3'>Please select from the following items, listed below. They are ranked from easier (top) to hardest (bottom).</p>
+        <p className='mt-3'>In this quiz, you will hear a note, then be asked to identify it. Please select from the following items, listed below. They are ranked from easier (top) to hardest (bottom).</p>
         <div className='row'>
           <Dropdown className='mt-3'>
             <Dropdown.Toggle variant="success" id="dropdown-basic">
