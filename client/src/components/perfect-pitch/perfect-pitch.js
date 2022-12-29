@@ -17,11 +17,15 @@ const Test = () => {
     }));
   };
 
-    // //returns logged out user to home page
-    // const authenticated = useSelector(state => state.auth);
-    // if(!authenticated.authenticated) {
-    //   return navigate("/perfect-pitch/session", { replace: true });
-    // }
+  //if user isn't logged in, send to home screen
+  const authenticated = useSelector(state => state.auth.authenticated);
+  const notSignedIn = () => {
+    navigate("/", { replace: true })
+  }
+  console.log(authenticated);
+  if(!authenticated) {
+    notSignedIn()
+  };
 
   return (
     <div>

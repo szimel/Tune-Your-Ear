@@ -25,7 +25,7 @@ const ByNoteGraph = () => {
     plugins: {
       title: {
         display: true,
-        text: 'All answers, categorized by note',
+        text: 'Correct vs incorrect, by note',
       },
     },
     responsive: true,

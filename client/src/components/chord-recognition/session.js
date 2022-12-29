@@ -16,6 +16,16 @@ const SessionChord = () => {
     dispatch(currentUser());
   }, []);
 
+  //if user isn't logged in, send to home screen
+  const authenticated = useSelector(state => state.auth.authenticated);
+  const notSignedIn = () => {
+    navigate("/", { replace: true })
+  }
+  console.log(authenticated);
+  if(!authenticated) {
+    notSignedIn()
+  };
+
   let progress = useSelector(state => state.user.chordQuiz);
   console.log(progress);
 

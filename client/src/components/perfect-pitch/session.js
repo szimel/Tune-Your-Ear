@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { currentUser } from "../../actions";
 import Header from "../headers/header-reg"
 import '../../css/header-reg.css'
+import { useNavigate } from "react-router-dom";
 
 var holder = {
   A: [], 'A#': [], B: [], C: [], 'C#': [], D: [], 'D#': [], E: [], F: [], 'F#': [], G: [], 'G#': []
@@ -15,6 +16,18 @@ const Session = () => {
   useEffect(() => {
     dispatch(currentUser());
   }, []);
+
+
+  const navigate = useNavigate();
+  //if user isn't logged in, send to home screen
+  const authenticated = useSelector(state => state.auth.authenticated);
+  const notSignedIn = () => {
+    navigate("/", { replace: true })
+  }
+  console.log(authenticated);
+  if(!authenticated) {
+    notSignedIn()
+  };
 
   let progress = useSelector(state => state.user.perfectPitch);
 

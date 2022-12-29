@@ -25,7 +25,7 @@ const ChartByNoteGraph = () => {
     plugins: {
       title: {
         display: true,
-        text: 'All answers, categorized by chord',
+        text: 'Correct vs incorrect, by chord',
       },
     },
     responsive: true,

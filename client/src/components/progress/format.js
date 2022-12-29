@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { currentUser } from '../../actions';
 import NoteProgress from './note-progress';
 import ChordProgress from './chord-progress';
+import { useNavigate } from 'react-router-dom';
 
 export var totalProgress;
 
@@ -15,8 +16,18 @@ const Progress = () => {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(currentUser());
-    // ref.current.click();
+    ref.current.click();
   }, []);
+
+  const navigate = useNavigate();
+  //if user isn't logged in, send to home screen
+  const authenticated = useSelector(state => state.auth.authenticated);
+  const notSignedIn = () => {
+    navigate("/", { replace: true })
+  };
+  if(!authenticated) {
+    notSignedIn()
+  };
 
   const holder = useSelector(state => state.user)
   totalProgress = holder;
@@ -37,7 +48,7 @@ const Progress = () => {
       console.log('got here');
       e = e.target.parentElement
       return e.setAttribute('id', 'highlighted');
-    }else  {
+    } else  {
       return e.target.setAttribute('id', 'highlighted');
     };
   };

@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { chordUserAnswer } from '../../actions';
+import { chordUserAnswer, signout } from '../../actions';
 import '../../css/general.css'
 import { chosenNotes } from './chord-piano';
+import HelpCenterRoundedIcon from '@mui/icons-material/HelpCenterRounded';
 
 var _ = require('lodash');
 
-//NEED 
-//*Function gets called when done is clicked = puts correct data into store
-//*Function that manages data so it is correct format for done being called
 
 
 //single global var for data management
@@ -21,17 +19,23 @@ var info = {
   session: [],//holds all the data 
   didRun: false,
   time: null
-}
+};
 
 
 const Answer = () => {
-
-  const run = () => {
-    console.log(info.session);
-  }
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  //if user isn't logged in, send to home screen
+  const authenticated = useSelector(state => state.auth.authenticated);
+  const notSignedIn = () => {
+    navigate("/", { replace: true })
+  }
+  console.log(authenticated);
+  if(!authenticated) {
+    notSignedIn()
+  };
+
 
 
   //logic for play, replay, done buttons
@@ -209,7 +213,7 @@ const buttonThree = <button id="button-general" name='button-three' onClick={onC
   return (
     <div id="builder-container" >
      <div className="mx-auto style" style={{width: '500px'}}>
-      <p>ill eventually make it make sense</p>
+      <p>The piano above shows which chords are in the quiz (try clicking <HelpCenterRoundedIcon /> above). Click play to hear a chord. Click the done button when you're ready for the quiz to end!</p>
       <div className="mx-auto " style={{width: '490px'}}>
         <div>
           {play ? playButton : null}
@@ -221,7 +225,6 @@ const buttonThree = <button id="button-general" name='button-three' onClick={onC
           {button ? buttonTwo : null}
           {button ? buttonThree :null}
         </div>
-        <p onClick={run}>TeSTER</p>
       </div>
     </div>
   </div>

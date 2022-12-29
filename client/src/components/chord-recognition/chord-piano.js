@@ -108,8 +108,8 @@ const Piano = () => {
       <div>
         <Header />
       </div>
-      <div className='padding'>
-        <ul data-intro="Shows and controls which notes appear on the quiz"className="set " id="piano-ul">
+      <div className='Padding'>
+        <ul data-intro="Shows and controls which chords appear on the quiz"className="set " id="piano-ul">
           <HelpCenterRoundedIcon
              sx={{ 
               color: "white", 
@@ -123,7 +123,7 @@ const Piano = () => {
           >
             <p>C</p>
           </li>
-          <li className="black cs" data-intro="Click on a note, like this one, to add it to the quiz. If it is highlighted, then it is in the quiz." value='black' note='C#'
+          <li className="black cs" data-intro="Click on a chord, like this one, to add it to the quiz. If it is highlighted, then it is in the quiz." value='black' note='C#'
           ref={refContainer.CS}
           onClick={(e) => setAttribute(e)}
           >

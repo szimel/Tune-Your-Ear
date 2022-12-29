@@ -1,8 +1,10 @@
 * {
   box-sizing: border-box;
+  max-width: none;
 }
 
 #piano-ul {
+  max-width: none;
   height: 16em;
   width: 34em;
   margin: auto;
@@ -28,7 +30,7 @@ li {
   float: left;
 }
 
-.padding {
+.Padding {
   padding-top: 7em;
 }
 

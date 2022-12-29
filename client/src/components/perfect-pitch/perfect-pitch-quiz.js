@@ -6,6 +6,7 @@ import { refContainer, noteSetup } from '../keys';
 import Forms from './q&a';
 import HelpCenterRoundedIcon from '@mui/icons-material/HelpCenterRounded';
 import introJs from 'intro.js';
+import { useNavigate } from 'react-router-dom';
 
 
 //controls which notes are being played
@@ -14,6 +15,18 @@ var refArray = {}
 
 
 const Easy = () => { 
+  const navigate = useNavigate();
+  //if user isn't logged in, send to home screen
+  const authenticated = useSelector(state => state.auth.authenticated);
+  const notSignedIn = () => {
+    navigate("/", { replace: true })
+  }
+  console.log(authenticated);
+  if(!authenticated) {
+    notSignedIn()
+  };
+
+
   //sets which notes to highlight
   const quizDifficulty = useSelector(state => state.difficulty);
   const helper = () => {
@@ -125,7 +138,7 @@ const Easy = () => {
       <div>
         <Header />
       </div>
-      <div className='padding'>
+      <div className='Padding'>
         <ul data-intro="Shows and controls which notes appear on the quiz"className="set " id="piano-ul">
           <HelpCenterRoundedIcon
              sx={{ 

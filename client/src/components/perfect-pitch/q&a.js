@@ -142,7 +142,6 @@ const Forms = () => {
     idk.push(chosenAudio.answer);
     return buttons.options = idk, buttons.random = threeNums;
   };
-  console.log(buttons);//STOPPED HERE NEED TO GET ALL THREE INTO ARRAY TO RANDOMIZE BUTTONS DISPLAYED
 
   //simple play audio function
   const playAudio = () => {
