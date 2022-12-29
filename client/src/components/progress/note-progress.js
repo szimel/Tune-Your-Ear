@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { currentUser } from "../../actions";
+import { totalProgress } from "./format";
 import Header from "../headers/header-reg";
 import Graph from "./all-q-graph";
 import '../../css/progress.css'
@@ -18,20 +19,14 @@ export var dataOverlord = {
 };
 
 
-const Progress = () => {
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(currentUser());
-  }, []);
-
-  let Progress = useSelector(state => state.user);
-  while(Progress.perfectPitch === undefined) {//so whole thing doesn't freak out
+const NoteProgress = () => {
+  while (totalProgress.perfectPitch === undefined) {//so whole thing doesn't freak out
     return null;
   };
 
 
   //turns the 0's into 1's
-  let progress = Progress.perfectPitch; 
+  let progress = totalProgress.perfectPitch; 
   progress.map(e => {
     e.answers.map(p => {
       if (p.correct === 0) {
@@ -113,48 +108,37 @@ const Progress = () => {
     return dataOverlord.time = `${sec} seconds!`;
   };
   time();
-  console.log(dataOverlord);
 
 
   return (
-    <div>
-      <Header />
-      <div className="Color">
-        <div className="mx-auto" style={{width: '200px'}}>
-          <h1>Progress</h1>
-        </div>
-        <div className="stats">
-          <div className='box space'>
-            <h6 className="p-2">Total Time</h6>
-            <h4 className=""><b>{dataOverlord.time}</b></h4>
-          </div>
-          <div className='box space'>
-            <h6 className="p-2">Total Questions</h6>
-            <h4><b>{dataOverlord.answers.length}</b></h4>
-          </div>
-          <div className='box space'>
-            <div>
-            <h6 className="p-2">Best Note</h6>
-            {/* <InfoOutlinedIcon /> */}
-            </div>
-            <h4><b>{dataOverlord.bestNote}</b></h4>
-          </div>
-          <div className='box'>
-            <h6 className="p-2">Worst Note</h6>
-            <h4><b>{dataOverlord.worstNote}</b></h4>
-          </div>
-        </div>
+    <>
+      <h2 className="mx-auto mt-3" style={{width: '40vw'}}>
+        Perfect Pitch Progress
+      </h2>
+      <div className="Stats">
+        <ul>
+          <li>
+            Total Time
+            <p>{dataOverlord.time}</p>
+          </li>
+          <li>
+            Total Questions
+            <p>{dataOverlord.answers.length}</p>
+          </li>
+          <li>
+            Best Note
+            <p>{dataOverlord.bestNote}</p>
+          </li>
+          <li>
+            Worst Note
+            <p>{dataOverlord.worstNote}</p>
+          </li>
+        </ul>
       </div>
-      <div className="graph">
-        <Graph />
-      </div>
-      <div className="Color">
-        <div className="graph">
-          <ByNoteGraph />
-        </div>
-      </div>
-    </div>
+      <Graph /> 
+      <ByNoteGraph />
+    </>
   );
 };
 
-export default Progress;
+export default NoteProgress;

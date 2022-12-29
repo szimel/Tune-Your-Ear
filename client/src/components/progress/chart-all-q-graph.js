@@ -1,4 +1,4 @@
-import { dataOverlord } from "./note-progress";
+import { chordDataOverlord } from "./chord-progress";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -19,13 +19,13 @@ ChartJS.register(
   Legend
 );
 
-const ByNoteGraph = () => {
+const ChartGraph = () => {
   //graph settings
   const options = {
     plugins: {
       title: {
         display: true,
-        text: 'All answers, categorized by note',
+        text: "Correct vs incorrect, by day",
       },
     },
     responsive: true,
@@ -37,10 +37,9 @@ const ByNoteGraph = () => {
         stacked: true,
       },
     },
-  };
-
+  };  
   //graph data
-  const labels = Object.keys(dataOverlord.answersByNote)
+  const labels = Object.keys(chordDataOverlord.answersBySession)
   const data = {
     labels,
     datasets: [
@@ -48,35 +47,36 @@ const ByNoteGraph = () => {
         label: 'Correct',
         data: labels.map(e => {
           let holder = 0;
-          dataOverlord.answersByNote[e].map(p => {
-            if(p.correct === 1) {
+          chordDataOverlord.answersBySession[e].map(p => {
+            if (p.correct === 1) {
               return holder += p.correct;
-            };
+            }
           });
           return holder;
         }),
-        backgroundColor: 'rgba(53, 162, 235, 0.5)'
+        borderColor: 'rgb(53, 162, 235)',
+        backgroundColor: 'rgba(53, 162, 235, 0.5)',
       },
-      {
-        label: 'Incorrect',
-        data: labels.map(e => {
-          let holder = 0;
-          dataOverlord.answersByNote[e].map(p => {
-            if(p.correct === -1) {
-              return holder += p.correct;
-            };
-          });
-          return holder;
-        }),
-        backgroundColor: 'rgba(153, 62, 135, 0.5)'
+      {label: 'Incorrect',
+      data: labels.map(e => {
+        let holder = 0;
+        chordDataOverlord.answersBySession[e].map(p => {
+          if (p.correct === -1) {
+            return holder += p.correct
+          }
+        });
+        return holder;
+      }),
+      backgroundColor: 'rgba(153, 62, 135, 0.5)',
       }
-    ]
+    ],
   };
+
   return (
     <div className="Graph">
-      <Bar options={options} data={data}/>
+      <Bar options={options} data={data} />
     </div>
-  )
-}
+  );
+};
 
-export default ByNoteGraph;
+export default ChartGraph;

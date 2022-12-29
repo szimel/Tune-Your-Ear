@@ -1,4 +1,4 @@
-import { dataOverlord } from "./note-progress";
+import { chordDataOverlord } from "./chord-progress";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -19,13 +19,13 @@ ChartJS.register(
   Legend
 );
 
-const ByNoteGraph = () => {
+const ChartByNoteGraph = () => {
   //graph settings
   const options = {
     plugins: {
       title: {
         display: true,
-        text: 'All answers, categorized by note',
+        text: 'All answers, categorized by chord',
       },
     },
     responsive: true,
@@ -40,7 +40,7 @@ const ByNoteGraph = () => {
   };
 
   //graph data
-  const labels = Object.keys(dataOverlord.answersByNote)
+  const labels = Object.keys(chordDataOverlord.answersByNote)
   const data = {
     labels,
     datasets: [
@@ -48,7 +48,7 @@ const ByNoteGraph = () => {
         label: 'Correct',
         data: labels.map(e => {
           let holder = 0;
-          dataOverlord.answersByNote[e].map(p => {
+          chordDataOverlord.answersByNote[e].map(p => {
             if(p.correct === 1) {
               return holder += p.correct;
             };
@@ -61,7 +61,7 @@ const ByNoteGraph = () => {
         label: 'Incorrect',
         data: labels.map(e => {
           let holder = 0;
-          dataOverlord.answersByNote[e].map(p => {
+          chordDataOverlord.answersByNote[e].map(p => {
             if(p.correct === -1) {
               return holder += p.correct;
             };
@@ -77,6 +77,7 @@ const ByNoteGraph = () => {
       <Bar options={options} data={data}/>
     </div>
   )
-}
+};
 
-export default ByNoteGraph;
+
+export default ChartByNoteGraph

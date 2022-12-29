@@ -55,11 +55,7 @@ const Answer = () => {
 
   const [done, setDone] = useState(false);
   const handleDoneShow = () => {
-    if(done === true) {
-      return setDone(false);
-    } else {
-      return setDone(true);
-    }
+    setDone(true)
   };
 
   const[button, setButton] = useState(false)
@@ -91,8 +87,7 @@ const Answer = () => {
     const chosenChord = chosenNotes[keys[random]];//audio file
     const correctChord = keys[random];//name like "C"
     info.chosenChord = chosenChord;//for replay button
-    info.correctChord  =correctChord//for setting buttons color (rightOrWrong)
-    console.log(correctChord);
+    info.correctChord  = correctChord//for setting buttons color (rightOrWrong)
 
 
     //plays chord as long as it isn't twice in a row
@@ -136,8 +131,8 @@ const Answer = () => {
   };
 
   const onClick = (e) => {
-    formatData(e)
-    rightOrWrong()
+    formatData(e);
+    rightOrWrong();
   }
 
   //sets colors of buttons
@@ -191,7 +186,7 @@ const Answer = () => {
     const format = {
       time: time,
       date: info.date,
-      resulst: info.session
+      results: info.session
     };
     dispatch(chordUserAnswer(format, () => {
       navigate("/chords/session", { replace: true });

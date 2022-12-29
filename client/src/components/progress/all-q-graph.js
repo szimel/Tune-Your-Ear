@@ -1,4 +1,4 @@
-import { dataOverlord } from "./progress";
+import { dataOverlord } from "./note-progress";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -26,7 +26,7 @@ const Graph = () => {
     plugins: {
       title: {
         display: true,
-        text: 'All Notes, All Quizzes',
+        text: 'Correct vs incorrect, by day',
       },
     },
     responsive: true,
@@ -75,7 +75,7 @@ const Graph = () => {
   };
 
   return (
-    <div>
+    <div className="Graph">
       <Bar options={options} data={data} />
     </div>
   );

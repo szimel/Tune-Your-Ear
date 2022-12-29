@@ -5,6 +5,7 @@
 * {
   font-family: "Inter", sans-serif;
   font-family: "Montserrat", sans-serif;
+  max-width: 100%;
 }
 
 .graph {
@@ -47,5 +48,95 @@
 
 .Color {
   background-color: #fafafa;
+  max-width: 80vw;
   padding: 15px 0;
 }
+
+/* for horizontal thing */
+.horizontal {
+  width: 15vw;
+  min-height: 91vh;
+  height: 1200px;
+  border-right: 1px solid lightgray;
+  position: sticky;
+  display: block;
+}
+
+.padding {
+  width: 15vw;
+  float: left;
+  padding: 0;
+}
+
+.horizontal div {
+  padding: 16px 5px 10px 5px;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+  display: block;
+  color: rgb(142, 142, 142);
+  font-size: 17px;
+  font-weight: 800;
+}
+.horizontal div svg {
+  float: right;
+}
+.horizontal div h5 {
+  color: rgb(142, 142, 142);
+  font-size: 17px;
+  font-weight: 800;
+}
+.horizontal div:hover {
+  background-color: #f2f2f2;
+}
+
+/* fixes everything to be next to others */
+.Container {
+  max-width: 100%;
+  min-width: 100%;
+  height: 100vh;
+}
+.content {
+  float: left;
+  width: 80vw;
+}
+
+#highlighted {
+  background-color: #f2f2f2;
+}
+.highlighted {
+  background-color: #f2f2f2;
+}
+
+/* new stats */
+.Stats {
+  display: flex;
+  width: 43vw;
+  margin: 40px auto 10px auto;
+  
+}
+.Stats li {
+  width: 200px;
+  height: 90px;
+  border-radius: 5px;
+  margin-right: 10px;
+  border: lightgray 1px solid;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-top: 5px;
+}
+.Stats p {
+  padding-left: 25px;
+  padding-top: 10px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.Graph {
+  width: 1000px;
+  height: auto;
+  margin: auto;
+}
+.Graph canvas {
+  width: 1000px;
+}
+

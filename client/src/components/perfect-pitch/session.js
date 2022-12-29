@@ -46,11 +46,9 @@ const Session = () => {
     return time.session = `${sec} seconds!`;
   };
   Time(progress.session)
-  console.log(time);
+
   const jsx = [];
   const formatData = () => {
-    //calculate time
-    const time = progress.time / 1000;
     //determines how many times each note was played
     progress.answers.map(e => {
       return holder[e.note].push(e);

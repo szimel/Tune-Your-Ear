@@ -1,17 +1,17 @@
 #nav-reg {
   position: relative;
-  height: 90px;
-  width: 100%;
+  height: 9vh;
+  width: 100vw;
   float: left;
-  margin: none;
   padding: 0;
   list-style: none;
+  margin: 0;
   background: none;
   border-top: 1px solid rgb(187, 187, 187);
   border-bottom: 1px solid rgb(187, 187, 187);
 }
 #nav-reg li a {
-  height: 89px;
+  height: 91px;
   display: block;
   padding: 30px 25px;
   text-decoration: none;

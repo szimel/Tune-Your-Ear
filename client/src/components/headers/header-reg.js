@@ -28,6 +28,7 @@ const Header = () => {
         <ul id="nav-reg">
           <li><a href="/"><HomeIcon /></a></li>
           <li><a href='/perfect-pitch'>Perfect Pitch</a></li>
+          <li><a href='/chords'>Chord Quiz</a></li>
           <li><a href='/progress'>Progress</a></li>
           <li id='auth-nav' onClick={handleSignOutClick}><a href="/"><LogoutIcon /></a></li>
         </ul>
