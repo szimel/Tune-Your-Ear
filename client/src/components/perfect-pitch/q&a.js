@@ -81,15 +81,13 @@ const Forms = () => {
   const [done, setDone] = useState(false)
   const [Button, setButton] = useState(false);
   const handleDone = () => setDone(true);
+  //shows options for user to select buttons
   const handleButtonShow = () => {
     setButton(true);
     refOne.current.setAttribute('id', 'button-general');
     refTwo.current.setAttribute('id', 'button-general');
     refThree.current.setAttribute('id', 'button-general');
   };
-  // const handleButtonsClose = () => {
-  //   setButton(false);
-  // }
   const handleShow = () => {
       setShow(true);
       SetShow(false);
@@ -123,10 +121,10 @@ const Forms = () => {
     buttons.run = true;//so that the handleFormSubmit runs
     setButtons();//puts three notes w correct in array
     handleClose(); //switches buttons play to replay
-    handleButtonShow();//shows options buttons
     handleDone(); //switches buttons play to replay
     playAudio(); //plays the actual sound
     results(null);//so 'answer was wrong' goes away
+    handleButtonShow();//shows options buttons
 
   };
 
