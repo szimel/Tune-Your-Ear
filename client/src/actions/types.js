@@ -4,3 +4,4 @@ export const USER_PROFILE = 'user_profile';
 export const CURRENT_USER = 'current_user';
 export const DIFFICULTY = 'difficulty';
 export const USER_PROFILE_CHORD = 'user_profile_chord';
+export const VALID_EMAIL = 'valid_email';

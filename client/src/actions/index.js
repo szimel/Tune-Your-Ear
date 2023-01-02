@@ -1,6 +1,16 @@
 import axios from "axios";
-import { AUTH_USER, AUTH_ERROR, USER_PROFILE, CURRENT_USER, DIFFICULTY, USER_PROFILE_CHORD } from "./types";
+import { AUTH_USER, AUTH_ERROR, USER_PROFILE, CURRENT_USER, DIFFICULTY, USER_PROFILE_CHORD, VALID_EMAIL } from "./types";
 
+
+//check if email exists 
+export const validEmail = (data) => dispatch => {
+  const url = `https://api.emailable.com/v1/verify?email=${data.email}&api_key=test_15e35997f4ce0943feb2`
+  console.log(url);
+  axios.get(url)
+  .then(function (response) {
+    dispatch({type: VALID_EMAIL, payload: response.data})
+  });
+}
 
 //handle sign up
 export const signup = (formData, callback) => dispatch => {
