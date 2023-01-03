@@ -1,6 +1,26 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@200&family=Montserrat:wght@500&display=swap");
 
+
+/* FOR MOBILE */
+@media screen and (max-device-width: 480px) {
+  #nav-home {
+    background-color: red;
+    
+    /* height: 9vh;
+    width: 100vw;
+    float: left;
+    margin: none;
+    padding: 0;
+    list-style: none;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 1) 100%
+    );
+    border-top: 1px solid rgb(23, 23, 23); */
+  }
+}
 /* general font */
 .font {
   font-family: "Inter", sans-serif;
@@ -8,8 +28,6 @@
 }
 
 /* navbar css */
-#nav-reg {
-}
 #nav-home {
   height: 90px;
   width: 100%;
